@@ -1,0 +1,8 @@
+#!/bin/sh
+prefix=${PASSWORD_STORE_DIR-~/.password-store}
+password_files=( "$prefix"/**/*.gpg )
+password_files=( "${password_files[@]#"$prefix"/}" )
+password_files=( "${password_files[@]%.gpg}" )
+password=$(printf '%s\n' "${password_files[@]}" | dmenu -i -p "Pass for:")
+echo $password_files | grep -qi "$password" && exit;
+pass generate -c "$password"

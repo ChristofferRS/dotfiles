@@ -1,0 +1,4 @@
+#!/bin/sh
+url=$(youtube-dl -g "https://drliveradio.akamaized.net/hls/live/2022411/p3/masterab.m3u8")
+echo "Started Recording"
+ffmpeg -xerror -loglevel 24 -i $url -t $1 -c copy ~/Dokumenter/Radio/$(date +'%d-%m-%y_%H:%M').mp3 && echo "Finished Recording $(date +'%d-%m-%y_%H:%M')"
