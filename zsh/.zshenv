@@ -1,4 +1,4 @@
-export PATH="$(du $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/"
+export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/"
 export EDITOR="nvim"
 export BROWSER="brave"
 export TERM=st-256color

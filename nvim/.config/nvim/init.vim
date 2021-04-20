@@ -14,11 +14,15 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 nnoremap <C-p> :find *
+nnoremap <C-a> :b 
 
 "Compile
 map <leader>c :w \| !compile %<CR>
 "View
 autocmd FileType tex,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
+
+nnoremap j gj
+nnoremap k gk
 
 "Jump points
 inoremap <C-j> <Esc>/<++><Enter>"_c4l
@@ -44,7 +48,9 @@ set path+=**
 set relativenumber
 set number
 set wildmenu
+set wildignorecase
 set laststatus=2
+set linebreak
 
 set shortmess+=c   " Shut off completion messages
 set completeopt-=preview

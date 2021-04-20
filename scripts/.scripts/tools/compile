@@ -18,4 +18,5 @@ case "$file" in
 	*\.tex) textype "$file" | grep -e ':[0-9]';;
 	*\.md) pandoc "$file" --pdf-engine=xelatex -o "$base".pdf ;;
     *\.ms)  refer -PS -e -p ~/Syncthing/bib "$file" | preconv | groff -e -ms -T pdf > "$base".pdf;;
+    *\.mom)  refer -PS -e -p ~/Syncthing/bib "$file" | preconv | groff -e -mom -T pdf > "$base".pdf;;
 esac

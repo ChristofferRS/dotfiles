@@ -10,9 +10,6 @@ map <F3> :make view &<CR><CR>
 map <leader>b :!biber %:r<CR>
 " map <F6> :setlocal spell! spelllang=da<CR>
 
-nnoremap j gj
-nnoremap k gk
-
 
 "Generel units{{{
 inoremap ;tw \textwidth

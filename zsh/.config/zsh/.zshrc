@@ -2,7 +2,19 @@
 parse_git_branch() {
         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
     }
-
+lfcd () {
+    tmp="$(mktemp)"
+    ll -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
 #}}}
 
 #ALIASES{{{
@@ -38,7 +50,6 @@ HISTFILE=~/.cache/zsh/history
 
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.config/lf/lfcd.sh
 bindkey '^R' history-incremental-pattern-search-backward
 
 #vi mode
