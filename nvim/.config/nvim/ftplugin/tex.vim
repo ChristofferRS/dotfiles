@@ -40,7 +40,9 @@ inoremap ;it \begin{itemize}<Enter>\end{itemize}<Enter><Enter><++><Esc>?item<Ent
 inoremap ;ta \begin{tabular}{}<Enter><++><Enter>\end{tabular}<Enter><++><Esc>?{}<CR>a
 inoremap ;tab \begin{table}[h]<CR>\centering<CR>\caption{<++>}<CR>\label{fig:<++>}<CR>\end{table}<CR><++><Esc>?caption<CR>O
 inoremap ;ce \begin{center}<Enter>\end{center}<Enter><++><Esc>?cen<CR>O
-inoremap ;fi \begin{figure}[]<Enter>\centering<Enter>\includegraphics[width=<++>\textwidth]{<++>}<Enter>\caption{<++>}<Enter>\label{fig:<++>}<Enter>\end{figure}<Enter><Enter><++><Esc>?re}[<Enter>f[ci[
+inoremap ;fi \begin{figure}[]<Enter>\centering<Enter><++><Enter>\caption{<++>}<Enter>\label{fig:<++>}<Enter>\end{figure}<Enter><++><Esc>?[]<Enter>a
+inoremap ;gr \includegraphics[width=\textwidth]{<++>}<Esc>?=<Enter>a
+inoremap ;sf \begin{subfigure}[]{<++>\textwidth}<Enter>\centering<Enter><++><Enter>\caption{<++>}<Enter>\label{subfig:<++>}<Enter>\end{subfigure}<Enter><++><Esc>?[]<Enter>a
 inoremap ;mp \begin{minipage}[]<Enter><++><Enter>\end{minipage}<Enter><Enter><++><Esc>?[]<CR>a
 inoremap ;i \textit{}<Space><++><Esc>F}i
 inoremap ;b \textbf{}<Space><++><Esc>F}i

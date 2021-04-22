@@ -14,7 +14,7 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 nnoremap <C-p> :find *
-nnoremap <C-a> :b 
+nnoremap <C-s> :b 
 
 "Compile
 map <leader>c :w \| !compile %<CR>
@@ -27,6 +27,8 @@ nnoremap k gk
 "Jump points
 inoremap <C-j> <Esc>/<++><Enter>"_c4l
 noremap <C-j> /<++><Enter>"_c4l
+inoremap <C-l> <ESC>dd/<++><Enter>"_c4l
+noremap <C-l> dd/<++><Enter>"_c4l
 
 "Folds
 nnoremap <Space> za
