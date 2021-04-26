@@ -24,11 +24,7 @@ alias grep='grep --color=auto'
 #alias python='/usr/bin/python3'
 alias sp='sudo pacman'
 alias vpn='sudo openconnect https://remote.au.dk/ST -u au618187@uni.au.dk'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 alias tle="curl -s http://celestrak.net/NORAD/elements/cubesat.txt | sed -ne '/DELPH/{p;n;p;n;p}'"
-alias imgbk="rsync -Pz ms100@10.28.2.15:~/gomspace/mission/img0000\*.jpg ~/Dokumenter/imgs/new/"
-alias imgbkf="scp ms100@10.28.2.15:~/gomspace/mission/\*[0-9].jpg /home/chris/full_imgs/"
-alias sync="ssh ms100@10.28.2.15 ls gomspace/mission/ | grep img | sed -e 's/img//g' -e 's/\_thumb.jpg.map/,0/g' -e 's/\_thumb.jpg/,1/g' -e 's/.jpg.map/,2/g' -e 's/.jpg/,3/g' >> local.csv"
 alias wget='wget --no-hsts'
 alias bb='wget --no-hsts --user au618187 --ask-password'
 alias yta='youtube-dl --add-metadata -i -x -f bestaudio/best -o "%(title)s.%(ext)s"'

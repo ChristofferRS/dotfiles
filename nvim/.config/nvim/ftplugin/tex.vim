@@ -1,4 +1,7 @@
 "LATEX{{{
+
+argadd **/*.tex
+argadd **/*.bib
 map <C-c> :w \| make<CR>
 let  g:tex_flavor = "latex"
 set wrap linebreak nolist

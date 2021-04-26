@@ -1,7 +1,7 @@
 exec ~/.fehbg &
 [[ -f ~/.config/X11/xresources ]] && xrdb -load ~/.config/X11/xresources
 #Start conpositor
-picom -b --config .config/picom/picom.conf
+#picom -b --config .config/picom/picom.conf
 #Start he bar
 dwmblocks &
 dunst &
