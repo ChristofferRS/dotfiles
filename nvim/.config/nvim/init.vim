@@ -5,6 +5,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'gavinok/spaceway.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'https://github.com/lilydjwg/colorizer'
 call plug#end()
 
 colorscheme spaceway
@@ -61,7 +62,7 @@ set completeopt+=menuone,noselect
 
 "Spell
 set spelllang=en_us,da
-map <F5> :setlocal spell!<CR>
+map <F5> :set spell!<CR>
 
 "Goto file and create
 noremap <leader>gf :e <cfile><cr>
@@ -130,3 +131,5 @@ nnoremap <F1> :terminal octave --persist %<CR>
 autocmd TermOpen * startinsert
 
 "}}}
+
+autocmd BufNewFile,BufRead vifmrc set ft=vim

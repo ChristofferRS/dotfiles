@@ -59,7 +59,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 autoload -U colors && colors # Load colors
 
 setopt PROMPT_SUBST
-PROMPT='%B%{$fg[green]%}%1~ %{$fg[blue]%}@%{$fg[red]%}$(parse_git_branch)%{$reset_color%} >%b '
+PROMPT='%B%{$fg[green]%}%1~%{$fg[blue]%}%{$reset_color%} >%b '
 
 #For man colors
 man() {

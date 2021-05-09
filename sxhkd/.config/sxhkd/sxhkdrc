@@ -1,12 +1,9 @@
-#
-# wm independent hotkeys
-#
-
-# terminal emulator
 super + Return
-	termite
+	alacritty
 
-# program launcher
+super + f
+	$BROWSER
+
 super + d
     dmenu_run
 
@@ -59,8 +56,8 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+#super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
@@ -118,12 +115,23 @@ super + {Left,Down,Up,Right}
 
 #Volume
 {XF86AudioRaiseVolume,XF86AudioLowerVolume}
-    amixer sset Master 5%{+,-}
+    amixer sset Master 5%{+,-} && polybar-msg hook volume 1
+
 XF86AudioMute
-    amixer sset Master toggle
+    amixer sset Master toggle && polybar-msg hook volume 1
+
 
 super + {plus,minus}
-    amixer sset Master 5%{-,+}
+    amixer sset Master 5%{+,-} && polybar-msg hook volume 1
 
 super + shift + {question,underscore}
     sudo light -{U,A} 10
+
+
+# Custom Scripts
+
+super + r
+    yankdw
+
+super + shift + P
+    screencap

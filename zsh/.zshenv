@@ -15,7 +15,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/build/topas/libexternal
 export TOPAS_G4_DATA_DIR=~/build/geant4-data
 export OCTAVE_HISTFILE="$XDG_CACHE_HOME/octave-hsts"
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
-
+export TERM=xterm-colo
 #Move GO
 export GOPATH="$XDG_DATA_HOME"/go
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority

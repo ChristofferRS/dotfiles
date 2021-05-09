@@ -3,13 +3,14 @@ exec ~/.fehbg &
 #Start conpositor
 #picom -b --config .config/picom/picom.conf
 #Start he bar
-dwmblocks &
+#dwmblocks &
 dunst &
 transmission-daemon &
+exec bspwm
 # Start dwm
-while true; do
-	# Log stderror to a file 
-	#dwm 2> ~/.dwm.log
-	# No error logging
-	dwm >/dev/null 2>&1
-done
+#while true; do
+#	# Log stderror to a file 
+#	#dwm 2> ~/.dwm.log
+#	# No error logging
+#	dwm >/dev/null 2>&1
+#done

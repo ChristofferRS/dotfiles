@@ -1,0 +1,2 @@
+#!/bin/sh
+printf "" | dmenu -p 'Name' | xargs -i import  ~/Dokumenter/Billeder/{}.png
