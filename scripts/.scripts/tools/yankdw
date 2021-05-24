@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 url=$(xclip -o)
 name=$(youtube-dl -e "$url")
 youtube-dl --embed-thumbnail --add-metadata -qix -f bestaudio/best --audio-format mp3 -o "~/Dokumenter/music/%(title)s.%(ext)s" "$url" && notify-send "✅ $name"

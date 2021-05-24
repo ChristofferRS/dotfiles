@@ -67,6 +67,8 @@ inoremap ;ga \begin{gathered}<Enter>\end{gathered}<Esc>?red<Enter>O
 
 "MATH{{{
 "inoremap ;c \cdot
+inoremap ;si \SI{}{<++>}<++><Esc>F}F}i
+inoremap ;SI \SI{}{<++>}<++><Esc>F}F}i
 inoremap <C-f> \frac{}{<++>}<++><Esc>F}F}i
 inoremap <C-l> _{}<++><Esc>F}i
 inoremap <C-h> ^{}<++><Esc>F}i
@@ -118,6 +120,7 @@ inoremap <leader><leader>p \Psi
 inoremap <leader><leader>m \mu
 inoremap <leader><leader>o \omega
 inoremap <leader><leader>O \Omega
+
 " inoremap <leader><leader>p \pi
 " inoremap <leader><leader>P \Pi
 "}}}

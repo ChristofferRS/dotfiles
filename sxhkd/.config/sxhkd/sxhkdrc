@@ -135,3 +135,6 @@ super + r
 
 super + shift + P
     screencap
+
+super + ctrl + {a,s}
+    alacritty -e {vifm,tml}

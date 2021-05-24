@@ -32,11 +32,10 @@ env:
 #scrolling:
   #history: 10000
   #multiplier: 3
-#font:
-  #normal:
-    # Default:
-    #family: monospace
-    #style: Regular
+font:
+  normal:
+    family: JetBrains Mono
+    style: Medium
   #bold:
     #family: monospace
     #style: Bold
@@ -46,7 +45,7 @@ env:
   #bold_italic:
     #family: monospace
     #style: Bold Italic
-  #size: 11.0
+  size: 9.0
   #offset:
   #  x: 0
   #  y: 0
@@ -136,15 +135,20 @@ colors:
 #  - { mouse: Middle, action: PasteSelection }
 # default paste binding:
 # `- { key: V, mods: Control|Shift, action: Paste }`
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
-  #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  #- { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
+  - { key: K,    mods: Alt,   mode: ~Alt,        action: ScrollPageUp,  }
+  - { key: J,  mods: Alt,   mode: ~Alt,        action: ScrollPageDown }
   #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
+  - { key: Home,     mods: Alt|Shift,       action: ResetFontSize    }
+  - { key: J,     mods: Alt|Shift,       action: IncreaseFontSize }
+  - { key: K,    mods: Alt|Shift,       action: DecreaseFontSize }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+
   #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   #- { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }

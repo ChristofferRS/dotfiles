@@ -1,10 +1,14 @@
 "general{{{
+
+nnoremap <leader>g :set operatorfunc=goperator#GrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call goperator#GrepOperator(visualmode())<cr>
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'gavinok/spaceway.vim'
-Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/goyo.vim'
 Plug 'https://github.com/lilydjwg/colorizer'
 call plug#end()
 
@@ -26,10 +30,10 @@ nnoremap j gj
 nnoremap k gk
 
 "Jump points
-inoremap <C-j> <Esc>/<++><Enter>"_c4l
-noremap <C-j> /<++><Enter>"_c4l
-inoremap <C-l> <ESC>dd/<++><Enter>"_c4l
-noremap <C-l> dd/<++><Enter>"_c4l
+inoremap <C-l> <Esc>/<++><Enter>"_c4l
+noremap <C-l> /<++><Enter>"_c4l
+"inoremap <C-l> <ESC>dd/<++><Enter>"_c4l
+"noremap <C-l> dd/<++><Enter>"_c4l
 
 "Folds
 nnoremap <Space> za
@@ -87,7 +91,24 @@ inoremap <F1> <C-o>:echo<CR>
 inoremap <F10> <C-o>:vsp $MYVIMRC<CR>
 nnoremap <F10> :vsp $MYVIMRC<CR>
 
-"Netrw{{{
+"QuicFix{{{
+
+let g:quickfix_is_open = 0
+
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+nnoremap <leader>q :call QuickfixToggle()<cr>
+
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
     if g:NetrwIsOpen
@@ -106,7 +127,7 @@ function! ToggleNetrw()
 endfunction
 
 " Add your own mapping. For example:
-noremap <silent> <C-E> :call ToggleNetrw()<CR>
+noremap <silent> <C-E> :call QuickfixToggle()<CR>
 
 
 let g:netrw_banner=0
@@ -133,3 +154,4 @@ autocmd TermOpen * startinsert
 "}}}
 
 autocmd BufNewFile,BufRead vifmrc set ft=vim
+
