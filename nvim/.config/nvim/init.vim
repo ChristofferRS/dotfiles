@@ -3,14 +3,30 @@
 nnoremap <leader>g :set operatorfunc=goperator#GrepOperator<cr>g@
 vnoremap <leader>g :<c-u>call goperator#GrepOperator(visualmode())<cr>
 
-call plug#begin('~/.config/nvim/plugged')
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'gavinok/spaceway.vim'
-"Plug 'junegunn/goyo.vim'
-Plug 'https://github.com/lilydjwg/colorizer'
-call plug#end()
+
+lua << EOF
+
+vim.cmd'packadd paq-nvim'
+local Paq = require'paq-nvim'    -- Module
+local paq = Paq.paq              -- Function
+paq{'savq/paq-nvim', opt=true}   -- Paq manages itself
+
+
+-- Add your packages
+-- paq 'neovim/nvim-lspconfig'
+-- paq 'nvim-lua/completion-nvim'
+-- paq 'nvim-lua/lsp_extensions.nvim'
+-- paq{'lervag/vimtex', opt=true}     -- Use braces when passing options
+-- paq{'dracula/vim', as='dracula'}   -- Use `as` to alias a package name (here `vim`)
+-- paq 'junegunn/goyo.vim'
+
+paq 'christoomey/vim-tmux-navigator'
+paq 'itchyny/lightline.vim'
+paq 'junegunn/vim-easy-align'
+paq 'gavinok/spaceway.vim'
+paq 'https://github.com/lilydjwg/colorizer'
+
+EOF
 
 colorscheme spaceway
 
