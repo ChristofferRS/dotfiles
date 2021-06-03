@@ -1,5 +1,12 @@
 #!/bin/sh
-url=$(xclip -o)
-name=$(youtube-dl -e "$url")
-youtube-dl --embed-thumbnail --add-metadata -qix -f bestaudio/best --audio-format mp3 -o "~/Dokumenter/music/%(title)s.%(ext)s" "$url" && notify-send "✅ $name"
+if [ $# -eq 0 ]; then
+    url=$(xclip -o)
+else
+    url="$1"
+fi
+
+name=$(youtube-dl --no-playlist -e "$url")
+notify-send "Downloading $name"
+
+youtube-dl --no-playlist --embed-thumbnail --add-metadata -qix -f bestaudio/best --audio-format mp3 -o "~/Dokumenter/music/%(title)s.%(ext)s" "$url" && notify-send "✅ $name"
 

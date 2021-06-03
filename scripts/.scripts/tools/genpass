@@ -1,8 +1,18 @@
 #!/bin/sh
+
+somefunc(){
+notify-send "Creating New password web/$selected/$username"
+pass generate -c "web/$selected/$username"
+}
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
-password_files=( "$prefix"/**/*.gpg )
-password_files=( "${password_files[@]#"$prefix"/}" )
-password_files=( "${password_files[@]%.gpg}" )
-password=$(printf '%s\n' "${password_files[@]}" | dmenu -i -p "Pass for:")
-echo $password_files | grep -qi "$password" && exit;
-pass generate -c "$password"
+password_files=$(fd .gpg --base-directory="$prefix" -x printf "{.}\n")
+
+selected="${1#*.}"
+username="$(printf "Username for $selected" | dmenu -i -p "$1" )"
+
+if $(printf "$password_files" | grep -qi "$selected/$username"); then
+    promt "Password exists" && somefunc
+else
+    somefunc
+fi
+

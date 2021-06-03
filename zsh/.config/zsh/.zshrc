@@ -1,4 +1,20 @@
 #FUNCTIONS{{{
+
+n ()
+{
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+        echo "nnn is already running"
+        return
+    fi
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+            . "$NNN_TMPFILE"
+            rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
 parse_git_branch() {
         git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
     }
@@ -24,7 +40,6 @@ alias grep='grep --color=auto'
 #alias python='/usr/bin/python3'
 alias sp='sudo pacman'
 alias vpn='sudo openconnect https://remote.au.dk/ST -u au618187@uni.au.dk'
-alias tle="curl -s http://celestrak.net/NORAD/elements/cubesat.txt | sed -ne '/DELPH/{p;n;p;n;p}'"
 alias wget='wget --no-hsts'
 alias bb='wget --no-hsts --user au618187 --ask-password'
 alias yta='youtube-dl --add-metadata -i -x -f bestaudio/best -o "%(title)s.%(ext)s"'
@@ -33,19 +48,14 @@ alias yta='youtube-dl --add-metadata -i -x -f bestaudio/best -o "%(title)s.%(ext
 #Command completion
 autoload -Uz compinit
 zstyle ':completion:*' menu select
-_comp_options+=(globdots)     # Include hidden files.
 zmodload zsh/complist
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+_comp_options+=(globdots)     # Include hidden files.
 compinit
-
 # History in cache directory:
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
-
-
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey '^R' history-incremental-pattern-search-backward
 
 #vi mode
@@ -72,3 +82,4 @@ man() {
     command man "$@"
 }
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -24,7 +24,7 @@ paq 'christoomey/vim-tmux-navigator'
 paq 'itchyny/lightline.vim'
 paq 'junegunn/vim-easy-align'
 paq 'gavinok/spaceway.vim'
-paq 'https://github.com/lilydjwg/colorizer'
+paq 'lilydjwg/colorizer'
 
 EOF
 
@@ -44,10 +44,11 @@ autocmd FileType tex,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
 
 nnoremap j gj
 nnoremap k gk
+vnoremap <leader>p "_dP
 
 "Jump points
-inoremap <C-l> <Esc>/<++><Enter>"_c4l
-noremap <C-l> /<++><Enter>"_c4l
+inoremap <C-j> <Esc>/<++><Enter>"_c4l
+noremap <C-j> /<++><Enter>"_c4l
 "inoremap <C-l> <ESC>dd/<++><Enter>"_c4l
 "noremap <C-l> dd/<++><Enter>"_c4l
 
