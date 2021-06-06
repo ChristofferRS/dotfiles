@@ -1,62 +1,5 @@
-"general{{{
 
-nnoremap <leader>g :set operatorfunc=goperator#GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call goperator#GrepOperator(visualmode())<cr>
-
-
-lua << EOF
-
-vim.cmd'packadd paq-nvim'
-local Paq = require'paq-nvim'    -- Module
-local paq = Paq.paq              -- Function
-paq{'savq/paq-nvim', opt=true}   -- Paq manages itself
-
-
--- Add your packages
--- paq 'neovim/nvim-lspconfig'
--- paq 'nvim-lua/completion-nvim'
--- paq 'nvim-lua/lsp_extensions.nvim'
--- paq{'lervag/vimtex', opt=true}     -- Use braces when passing options
--- paq{'dracula/vim', as='dracula'}   -- Use `as` to alias a package name (here `vim`)
--- paq 'junegunn/goyo.vim'
-
-paq 'christoomey/vim-tmux-navigator'
-paq 'itchyny/lightline.vim'
-paq 'junegunn/vim-easy-align'
-paq 'gavinok/spaceway.vim'
-paq 'lilydjwg/colorizer'
-
-EOF
-
-colorscheme spaceway
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-nnoremap <C-p> :find *
-nnoremap <C-s> :b 
-
-"Compile
-map <leader>c :w \| !compile %<CR>
-"View
-autocmd FileType tex,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
-
-nnoremap j gj
-nnoremap k gk
-vnoremap <leader>p "_dP
-
-"Jump points
-inoremap <C-j> <Esc>/<++><Enter>"_c4l
-noremap <C-j> /<++><Enter>"_c4l
-"inoremap <C-l> <ESC>dd/<++><Enter>"_c4l
-"noremap <C-l> dd/<++><Enter>"_c4l
-
-"Folds
-nnoremap <Space> za
-set foldmethod=marker
-
-nnoremap <esc> :noh<return><esc>
+"Settings{{{
 filetype plugin on
 syntax on
 set tabstop=4 softtabstop=4
@@ -79,35 +22,77 @@ set linebreak
 set shortmess+=c   " Shut off completion messages
 set completeopt-=preview
 set completeopt+=menuone,noselect
+colorscheme spaceway
+"}}}
 
-
+"Vanilla bindings{{{
 "Spell
 set spelllang=en_us,da
 map <F5> :set spell!<CR>
 
-"Goto file and create
 noremap <leader>gf :e <cfile><cr>
 noremap gp :! xdg-open <cfile><cr><cr>
-noremap <leader>d :r !date --date="+24hours" +'\#\# \%d/\%m/\%C (\%V)'<cr>o
 
+nnoremap <leader>g :set operatorfunc=goperator#GrepOperator<cr>g@
+vnoremap <leader>g :<c-u>call goperator#GrepOperator(visualmode())<cr>
 
-"presentation
-nnoremap <F9> :Goyo <CR>
+nnoremap <C-p> :find *
+nnoremap <C-s> :b 
 
-"Enclose in Bracets and quotes
-vnoremap { "0c{<c-r>0}<esc>
-vnoremap [ "0c[<c-r>0]<esc>
-vnoremap ( "0c(<c-r>0)<esc>
-vnoremap ½ "0c"<c-r>0"<esc>
-"vnoremap ' "0c'<c-r>0'<esc>
+nnoremap <esc> :noh<return><esc>
 
+map <leader>c :w \| !compile %<CR>
+autocmd FileType tex,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
 
+nnoremap j gj
+nnoremap k gk
+
+vnoremap <leader>p "_dP
 
 nnoremap <F1> :echo<CR>
 inoremap <F1> <C-o>:echo<CR>
+
 inoremap <F10> <C-o>:vsp $MYVIMRC<CR>
 nnoremap <F10> :vsp $MYVIMRC<CR>
 
+inoremap <C-j> <Esc>/<++><Enter>"_c4l
+noremap <C-j> /<++><Enter>"_c4l
+
+nnoremap <Space> za
+set foldmethod=marker
+"}}}
+"Plugins{{{
+lua << EOF
+vim.cmd'packadd paq-nvim'
+local Paq = require'paq-nvim'    -- Module
+local paq = Paq.paq              -- Function
+paq{'savq/paq-nvim', opt=true}   -- Paq manages itself
+
+paq 'christoomey/vim-tmux-navigator'
+paq 'itchyny/lightline.vim'
+paq 'junegunn/vim-easy-align'
+paq 'gavinok/spaceway.vim'
+paq 'lilydjwg/colorizer'
+paq 'lifepillar/vim-mucomplete'
+EOF
+"}}}
+
+"PLUGIN CONFIG{{{
+
+"EASYALIGN
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+"MUCOMPLETE
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#chains = {
+\ 'default' : ['path', 'omni', 'keyn', 'dict', 'uspl'],
+\ 'vim'     : ['path', 'cmd', 'keyn'],
+\ 'tex'     : ['cmd', 'uspl', 'keyn']
+\ }
+imap <expr> <down> mucomplete#extend_fwd("\<down>")
+
+"}}}
 "QuicFix{{{
 
 let g:quickfix_is_open = 0
@@ -159,7 +144,7 @@ nnoremap <leader>t  :ter<CR>
 nnoremap <leader>vt :vsp \| ter<CR>
 
 "}}}
-"}}}
+
 
 "Octave{{{
 augroup filetypedetect
