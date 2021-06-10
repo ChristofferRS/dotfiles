@@ -2,11 +2,14 @@
 connect(){
     bluetoothctl -- devices | dmenu | cut -d" " -f2 | xargs bluetoothctl -- connect
 }
+disconnect(){
+    bluetoothctl -- devices | dmenu | cut -d" " -f2 | xargs bluetoothctl -- disconnect
+}
 powon(){
-    bluetoothctl -- power on 
+    bluetoothctl -- power on >/dev/null && echo "Powered on!"
 }
 powoff(){
-    bluetoothctl -- power off
+    bluetoothctl -- power off >/dev/null && echo "Powered off!"
 }
 pair(){
     dev=$(bluetoothctl -- devices | dmenu | cut -d" " -f2)
@@ -21,6 +24,7 @@ scanon(){
 
 menu=$(cat << EOF
 Connect
+Disconnect
 Power On
 Power Off
 Scan On
@@ -30,6 +34,7 @@ EOF
 
 case "$(echo "$menu" | dmenu -i -p "Bluetooth")" in
     "Connect") connect ;;
+    "Disconnect") disconnect ;;
     "Power On") powon ;;
     "Power Off") powoff ;;
     "Scan On") scanon &;;
