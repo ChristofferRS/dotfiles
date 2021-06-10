@@ -9,5 +9,5 @@ dunst &
 #exec bspwm
 # Start dwm
 while true; do
-    exec dwm
+    ssh-agent dwm
 done

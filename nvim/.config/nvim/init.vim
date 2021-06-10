@@ -1,4 +1,3 @@
-
 "Settings{{{
 filetype plugin on
 syntax on
@@ -19,6 +18,7 @@ set wildignorecase
 set laststatus=2
 set linebreak
 
+"set colorcolumn=80
 set shortmess+=c   " Shut off completion messages
 set completeopt-=preview
 set completeopt+=menuone,noselect
@@ -85,10 +85,11 @@ nmap ga <Plug>(EasyAlign)
 
 "MUCOMPLETE
 let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#completion_delay = 1
 let g:mucomplete#chains = {
 \ 'default' : ['path', 'omni', 'keyn', 'dict', 'uspl'],
 \ 'vim'     : ['path', 'cmd', 'keyn'],
-\ 'tex'     : ['cmd', 'uspl', 'keyn']
+\ 'latex'     : ['cmd', 'uspl', 'keyn']
 \ }
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
 

@@ -1,0 +1,37 @@
+#!/bin/sh
+connect(){
+    bluetoothctl -- devices | dmenu | cut -d" " -f2 | xargs bluetoothctl -- connect
+}
+powon(){
+    bluetoothctl -- power on 
+}
+powoff(){
+    bluetoothctl -- power off
+}
+pair(){
+    dev=$(bluetoothctl -- devices | dmenu | cut -d" " -f2)
+    bluetoothctl -- pair "$dev"
+    bluetoothctl -- trust "$dev"
+    bluetoothctl -- connect "$dev"
+}
+
+scanon(){
+    echo "Not implemented"
+}
+
+menu=$(cat << EOF
+Connect
+Power On
+Power Off
+Scan On
+Pair New
+EOF
+)
+
+case "$(echo "$menu" | dmenu -i -p "Bluetooth")" in
+    "Connect") connect ;;
+    "Power On") powon ;;
+    "Power Off") powoff ;;
+    "Scan On") scanon &;;
+    "Pair New") pair ;;
+esac | xargs -I{} notify-send "{}"

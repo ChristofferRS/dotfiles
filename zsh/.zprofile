@@ -28,5 +28,7 @@ export NNN_COLORS='4231'
 export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/6.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/'
 export NNN_PLUG='o:fzopen;f:fzcd'
 
+export DOTREMINDERS=~/Syncthing/rems/reminders.rem
+
 #StartX if not running in tty
 [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"

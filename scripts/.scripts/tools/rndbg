@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+cachedir="${XDG_CACHE_HOME}/rndbg"
+[ ! -d "${cachedir}" ] && mkdir -p "${cachedir}"
+link="https://source.unsplash.com/random/"
+wallpaper="${cachedir}/wallpaper.jpg"
+
+reddit(){
+    useragent="chris"
+    timeout=30
+
+    sort=$2
+    top_time=$3
+    [ -z $sort ] && sort="top"
+    [ -z $top_time ] && top_time="month"
+    sub=$1
+    echo "Downloading from $sub"
+
+    url="https://www.reddit.com/r/$sub/$sort/.json?raw_json=1&t=$top_time"
+    # Example: https://www.reddit.com/r/spaceporn/top/?t=month
+    content=`wget -T $timeout -U "$useragent" -q -O - $url`
+    urls=$(echo -n "$content"| jq -r '.data.children[]|select(.data.post_hint|test("image")?) | .data.preview.images[0].source.url')
+    names=$(echo -n "$content"| jq -r '.data.children[]|select(.data.post_hint|test("image")?) | .data.title')
+    ids=$(echo -n "$content"| jq -r '.data.children[]|select(.data.post_hint|test("image")?) | .data.id')
+    arrURLS=($urls)
+    arrNAMES=($names)
+    arrIDS=($ids)
+    wait # prevent spawning too many processes
+    size=${#arrURLS[@]}
+    [ $size -eq 0 ] && echo "The current subreddit is not valid." && exit 1
+    idx=$(($RANDOM % $size))
+    target_url=${arrURLS[$idx]}
+    target_name=${arrNAMES[$idx]}
+    target_id=${arrIDS[$idx]}
+    ext=`echo -n "${target_url##*.}"|cut -d '?' -f 1`
+    newname=`echo $target_name | sed "s/^\///;s/\// /g"`_"$subreddit"_$target_id.$ext
+    wget -T $timeout -U "$useragent" --no-check-certificate -P down -O ${wallpaper} $target_url &>/dev/null
+}
+
+unsplash() {
+    local search="${search// /_}"
+    if [ ! -z $height ] || [ ! -z $width ]; then
+        link="${link}${width}x${height}";
+    else
+        link="${link}1920x1080";
+    fi
+
+    [ ! -z $search ] && link="${link}/?${search}"
+    wget -q -O ${wallpaper} $link
+}
+
+type_check() {
+    mime_types=("image/bmp" "image/jpeg" "image/gif" "image/png" "image/heic")
+    isType=false
+
+    for requiredType in "${mime_types[@]}"
+    do
+        imageType=$(file --mime-type  ${wallpaper} | awk '{print $2}')
+        if [ "$requiredType" = "$imageType" ]; then
+            isType=true
+            break
+        fi
+    done
+
+    if [ $isType = false ]; then
+        echo "MIME-Type missmatch. Downloaded file is not an image!"
+        exit 1
+    fi
+}
+
+select_random_wallpaper () {
+    wallpaper=$(find $dir -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.svg" -o -iname "*.gif" \) -print | shuf -n 1)
+}
+
+pywal_cmd() {
+    [ $pywal -eq 1 ] && wal -c && wal -i ${wallpaper} -n -q
+}
+
+
+feh_cmd() {
+    local feh=(feh)
+    if [ ! -z $bgtype ]; then
+        [ $bgtype == 'bg-center' ] && feh+=(--bg-center)
+        [ $bgtype == 'bg-fill' ] && feh+=(--bg-fill)
+        [ $bgtype == 'bg-max' ] && feh+=(--bg-max)
+        [ $bgtype == 'bg-scale' ] && feh+=(--bg-scale)
+        [ $bgtype == 'bg-tile' ] && feh+=(--bg-tile)
+    else
+        feh+=(--bg-scale)
+    fi
+    [ ! -z $custom ] && feh+=($custom)
+    feh+=(${wallpaper})
+    "${feh[@]}"
+}
+
+pywal=0
+while getopts "h:w:s:l:b:r:c:d:m" o; do case "${o}" in
+    b) bgtype=${OPTARG} ;;
+    s) search=${OPTARG} ;;
+    h) height=${OPTARG} ;;
+    w) width=${OPTARG} ;;
+    l) link=${OPTARG} ;;
+    r) sub=${OPTARG} ;;
+    c) custom=${OPTARG} ;;
+    d) dir=${OPTARG} ;;
+    p) pywal=1 ;;
+    *) echo "Unexpected option: $1 - this should not happen." ; usage ;;
+esac done
+
+if [ ! -z $dir ]; then
+    select_random_wallpaper
+elif [ $link = "reddit" ] || [ ! -z $sub ]; then
+    reddit "$sub"
+else
+    unsplash
+fi
+
+type_check
+feh_cmd
+pywal_cmd

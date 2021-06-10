@@ -1,0 +1,25 @@
+#!/bin/sh
+cuts(){
+    name=$1
+    dir="$2"
+    out="$3"
+    echo "Searchin for $name in $dir"
+    fil=$(fd --max-results=1 "$name" $dir)
+    bnm=$(basename "$fil")
+    shift 3;
+    args=${@}
+    echo "Running on file  $fil with $args and output to $out/$bnm"
+    ffmpeg -nostdin -y -i "$fil" $args -vn -c copy "$out/$bnm"
+}
+
+rfil(){
+    while read l; do
+        cuts $l
+    done < "$1"
+    exit 0
+}
+
+[ $# -eq 1 ] && [ -f "$1" ] && rfil $1
+
+cuts "${@}"
+
