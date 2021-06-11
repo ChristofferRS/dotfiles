@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo pkill -SIGINT openconnect || pass show web/au.dk/au618187@uni.au.dk | sudo openconnect -b https://remote.au.dk/ST -u au618187@uni.au.dk --passwd-on-stdin

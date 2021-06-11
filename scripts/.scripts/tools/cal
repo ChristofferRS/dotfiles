@@ -1,2 +1,4 @@
 #!/bin/sh
-remind -m -p3 -b1 ~/Syncthing/rems/reminders.rem | rem2ps -c0 -m A4 | zathura -
+remind -m -p3 -b1 ~/Syncthing/rems/reminders.rem | rem2ps -l -c0 -m A4 | ps2pdf - > ~/Syncthing/calendar.pdf 
+zathura ~/Syncthing/calendar.pdf 
+

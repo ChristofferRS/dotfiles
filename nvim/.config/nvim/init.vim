@@ -23,6 +23,7 @@ set shortmess+=c   " Shut off completion messages
 set completeopt-=preview
 set completeopt+=menuone,noselect
 colorscheme spaceway
+set makeprg=./run
 "}}}
 
 "Vanilla bindings{{{
