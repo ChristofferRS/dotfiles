@@ -1,0 +1,43 @@
+IMAPStore gmail-remote
+Host imap.gmail.com
+User christoffer143@gmail.com
+PassCmd "pass show mutt"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+
+MaildirStore gmail-local
+SubFolders Verbatim
+Path ~/.local/share/mail/gmail/
+Inbox ~/.local/share/mail/gmail/INBOX
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
+
+IMAPStore postau-remote
+Host post.au.dk
+User au618187
+PassCmd "pass show web/au.dk/au618187@uni.au.dk | head -n1"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+
+MaildirStore postau-local
+SubFolders Verbatim
+Path ~/.local/share/mail/postau/
+Inbox ~/.local/share/mail/postau/INBOX
+
+Channel postau
+Far :postau-remote:
+Near :postau-local:
+Create Both
+Expunge Both
+Patterns *
+SyncState *
+
