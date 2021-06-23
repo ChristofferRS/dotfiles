@@ -1,0 +1,6 @@
+[Unit]
+Description=Mai sync
+
+[Service]
+Type=oneshot
+ExecStart=/home/chris/.scripts/tools/getmail

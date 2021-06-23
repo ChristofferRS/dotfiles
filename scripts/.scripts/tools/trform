@@ -1,0 +1,24 @@
+#!/bin/sh
+
+pmv(){
+    echo "Moving: $1 -> $2"
+    pass mv $1 tmpfil
+    pass rm -r $2
+    pass mv tmpfil $2
+}
+
+
+for f in $@; do
+    uname=$(basename $f)
+    uname=${uname%.*}
+    path="${f%/*}"
+    website="${path##*/}"
+    pname="${f%.gpg}"
+    pass edit "$pname"
+    read -p "Wanna move??" yn
+    case $yn in
+        [Yy]* ) pmv "$pname" "$path";;
+        [Nn]* ) ;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done

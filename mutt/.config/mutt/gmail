@@ -1,0 +1,20 @@
+#set folder="imaps://christoffer143@imap.gmail.com/"
+set folder="~/.local/share/mail/gmail"
+#set imap_user="christoffer143@gmail.com"
+#set imap_pass = `pass show mutt`
+
+set smtp_url="smtps://christoffer143@smtp.gmail.com"
+set smtp_pass = `pass show mutt`
+
+set spoolfile = "+INBOX"
+set record = "+[Gmail]/Sendte mails"
+set trash = "+[Gmail]/Papirkurv"
+set postponed = "+[Gmail]/Kladder"
+
+named-mailboxes "====== Gmail ======" "+INBOX"
+mailboxes ="[Gmail]/Sendte mails" =[Gmail]/Papirkurv =[Gmail]/Kladder =Ordre ="[Gmail]/Alle mails" =Hjem
+
+set from="christoffer143@gmail.com"
+set realname="Christoffer Søndergaard"
+
+

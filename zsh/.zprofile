@@ -2,7 +2,7 @@ export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.loca
 export EDITOR="nvim"
 export TERMINAL="st"
 
-export BROWSER="qutebrowser"
+export BROWSER="brave"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -10,7 +10,7 @@ export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/X11/xinitrc"
 
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 #export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}"/gnupg
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
@@ -22,6 +22,8 @@ export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
 export GOPATH="$XDG_DATA_HOME"/go
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export LESSHISTFILE="-"
+export PASSWORD_STORE_DIR="$HOME"/.password-store
+export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 
 export NNN_OPTS="e"
 export NNN_COLORS='4231'

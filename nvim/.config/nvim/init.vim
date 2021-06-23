@@ -28,7 +28,7 @@ set makeprg=./run
 
 "Vanilla bindings{{{
 "Spell
-set spelllang=en_us,da
+set spelllang=en_us
 map <F5> :set spell!<CR>
 
 noremap <leader>gf :e <cfile><cr>
@@ -75,6 +75,8 @@ paq 'junegunn/vim-easy-align'
 paq 'gavinok/spaceway.vim'
 paq 'lilydjwg/colorizer'
 paq 'lifepillar/vim-mucomplete'
+paq 'editorconfig/editorconfig-vim'
+
 EOF
 "}}}
 
