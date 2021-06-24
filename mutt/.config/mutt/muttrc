@@ -153,3 +153,4 @@ color body red default "([a-z][a-z0-9+-]*://(((([a-z0-9_.!~*'();:&=+$,-]|%[0-9a-
 
 macro index,pager \cb "<pipe-message> urlscan<Enter>"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>"
+alias Marie Marie Christiansen <mariechristiansen98@gmail.com>

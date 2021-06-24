@@ -22,7 +22,7 @@ export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
 export GOPATH="$XDG_DATA_HOME"/go
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export LESSHISTFILE="-"
-export PASSWORD_STORE_DIR="$HOME"/.password-store
+export PASSWORD_STORE_DIR="$HOME/.password-store"
 export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 
 export NNN_OPTS="e"
