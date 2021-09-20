@@ -1,0 +1,2 @@
+#!/bin/sh
+[ -d "/mnt/PNY/Syncthing" ] && rsync -aurP ~/Syncthing /mnt/PNY/

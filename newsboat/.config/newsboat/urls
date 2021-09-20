@@ -1,4 +1,4 @@
-######YouTubes######
+----------YouTube------------
 #William Osman
 https://www.youtube.com/feeds/videos.xml?channel_id=UCfMJ2MchTSW2kWaT0kK94Yw "YouTube"
 #Dr nyheder
@@ -33,6 +33,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCaLoic4JDuHSoKmp4U4tU2Q "Yo
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg "YouTube"
 
 
+----------Lbry------------
 #Brodie Robertson
 https://lbryfeed.melroy.org/channel/odysee/BrodieRobertson:5  "Odysee"
 #Luke Smith
@@ -53,19 +54,13 @@ https://lbryfeed.melroy.org/channel/odysee/art:7 "Odysee"
 #https://twitchrss.appspot.com/vod/themrsark "Twitch"
 
 
-#DrNews
+----------Nyheder------------
 https://www.dr.dk/nyheder/service/feeds/allenyheder "Nyheder" "~Dr Nyheder"
-#Videnskab dk
-https://videnskab.dk/topic/fysik/rss "Nyheder"
-#https://videnskab.dk/topic/covid-19/rss "Nyheder"
-
-#MadsFøk
-http://www.madsfoek.dk/udgivelser/rss.rss
+http://feeds.nature.com/nature/rss/current?format=xml
+https://nat.au.dk/om-fakultetet/nyheder/rss.xml?element=557864 "~AU Nyheder"
 
 ### Podcast ###
-#Rumsnak
-https://feeds.fireside.fm/rumsnak/rss "Podcast"
-
-### LUKE SMITH ####
+----------Blogs------------
 https://lukesmith.xyz/rss.xml
-https://notrelated.xyz/rss "Podcast"
+https://landchad.net/rss.xml
+

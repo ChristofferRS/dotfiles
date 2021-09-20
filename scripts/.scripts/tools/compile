@@ -4,11 +4,11 @@ dir=$(dirname "$file") #Get files directory
 base="${file%.*}" #Filname without extension
 cd "$dir" || exit #Can we get into directory? if not exit
 textype() {
-	pdflatex -file-line-error -interaction=nonstopmode --output-directory="$dir" "$base" &&
+	xelatex -file-line-error -interaction=nonstopmode --output-directory="$dir" "$base" &&
 	grep -i addbibresource "$file" >/dev/null &&
 	biber --input-directory "$dir" "$base" &&
-	pdflatex -file-line-error -interaction=nonstopmode --output-directory="$dir" "$base" &&
-	pdflatex -file-line-error -interaction=nonstopmode --output-directory="$dir" "$base"
+	xelatex -file-line-error -interaction=nonstopmode --output-directory="$dir" "$base" &&
+	xelatex -file-line-error -interaction=nonstopmode --output-directory="$dir" "$base"
 }
 
 case "$file" in

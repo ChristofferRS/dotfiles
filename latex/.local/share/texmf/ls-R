@@ -1,0 +1,19 @@
+% ls-R -- filename database for kpathsea; do not change this line.
+./:
+.:
+ls-R
+tex
+
+
+./tex:
+latex
+
+./tex/latex:
+audklogos
+beamerthemeaarhusuniversity
+
+./tex/latex/audklogos:
+audklogos.sty
+
+./tex/latex/beamerthemeaarhusuniversity:
+beamerthemeaarhusuniversity.sty

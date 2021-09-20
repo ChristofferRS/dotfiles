@@ -1,0 +1,289 @@
+\RequirePackage{audklogos}
+\RequirePackage{fontspec}
+\RequirePackage{tikz}
+\RequirePackage[absolute,overlay]{textpos}
+
+
+\mode<presentation>
+%%% Removing navigation symbols
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=4em,text margin right=4em}
+
+%%% Colors
+\definecolor{AUDark}{RGB}{0,37,70}
+\definecolor{AULight}{RGB}{55,160,203}
+\definecolor{AUTransparent}{RGB}{137,201,229}
+\definecolor{AUGreen}{RGB}{139,173,63}
+\definecolor{AUMagenta}{RGB}{226,0,122}
+
+%%% fonts
+
+\setmainfont{AU Passata}
+%\setmainfont{AUPassata}[
+%Path = ./fonts/,
+%Extension = .ttf,
+%UprightFont = *_Rg,
+%BoldFont = *_Bold,
+%ItalicFont = *_RgOblique,
+%BoldItalicFont = *_BoldOblique]
+\usefonttheme{serif} %% hax to trick beamer into loading the mainfont for \emph{}, \textbf{} etc.
+%
+\newfontfamily{\textlight}{AU Passata Light}
+
+% There you go Simon :)
+\renewcommand\mathfamilydefault{cmr}
+%\renewcommand\bibfont{\tiny}
+
+\TPGrid[16pt,9pt]{16}{9}
+
+\defbeamertemplate{frametitle}{AUWhite}{%
+    \begin{textblock}{14}[0,1](0,1.5)%
+       {\color{white}\bf{\huge\MakeUppercase\insertframetitle}}%
+    \end{textblock}
+    
+   \begin{textblock}{14}[0,0](1,2)%
+      \tikz \fill [white] (-0.1,0) rectangle (0.7,0.05);
+   \end{textblock}
+   \vspace{3.5em}
+}
+
+\defbeamertemplate{frametitle}{AUDark}{%
+    \begin{textblock}{14}[0,1](0,1.5)%
+       {\color{AUDark}\bf{\huge\MakeUppercase\insertframetitle}}%
+    \end{textblock}
+    
+   \begin{textblock}{14}[0,0](1,2)%
+      \tikz \fill [AUDark] (-0.1,0) rectangle (0.7,0.05);
+   \end{textblock}
+   \vspace{3.5em}
+}
+
+%%%% FOOTERS
+\defbeamertemplate{footline}{AUDark}{%
+    \begin{textblock}{3}[1,0](8.6,8.7)%
+        \hfill\fontsize{4}{0}\selectfont SLIDE \insertframenumber\ IN \inserttotalframenumber
+        \end{textblock}
+        \begin{textblock}{1}[0,1](0,8.8)%
+        \AUDKLogo[2.1em]{AUDark}
+    \end{textblock}
+        \begin{textblock}{10}[0,1](1.1,8.5)%
+        AARHUS
+    \end{textblock}
+    \begin{textblock}{10}[0,1](1.1,8.75)%
+        UNIVERSITY
+    \end{textblock}
+    \begin{textblock}{10}[0,1](1.1,9)%
+        \fontsize{4}{0}\selectfont\textlight{\insertinstitute}
+    \end{textblock}
+    \begin{textblock}{1}[0.5,1](15.9,9)%
+        \AUDKSeal[3.5em]{AUDark}
+    \end{textblock}
+}
+
+\defbeamertemplate{footline}{AUWhite}{%
+    \begin{textblock}{3}[1,0](8.6,8.7)%
+        \hfill\fontsize{4}{0}\selectfont SLIDE \insertframenumber\ IN \inserttotalframenumber
+        \end{textblock}
+       
+        \begin{textblock}{1}[0,1](0,8.8)%
+        {\color{white}\AUDKLogo[2.1em]{white}}
+    \end{textblock}
+        \begin{textblock}{10}[0,1](1.1,8.5)%
+        AARHUS
+    \end{textblock}
+    \begin{textblock}{10}[0,1](1.1,8.75)%
+        UNIVERSITY
+    \end{textblock}
+    \begin{textblock}{10}[0,1](1.1,9)%
+        \fontsize{4}{0}\selectfont\textlight{\insertinstitute}
+    \end{textblock}
+    \begin{textblock}{1}[0.5,1](15.9,9)%
+        {\color{white}\AUDKSeal[3.5em]{white}}
+    \end{textblock}
+}
+
+%%% Slide types set in options
+
+\makeatletter
+\define@key{beamerframe}{AUDark}[true]{%
+    \color{white}
+    \setbeamertemplate{frametitle}[AUWhite]%
+    \setbeamertemplate{footline}[AUWhite]%
+    \setbeamercolor*{background canvas}{bg=AUDark,fg=white}%
+    \setbeamercolor*{structure}{fg=white}%
+    \setbeamercolor*{itemize/enumerate body}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subbody}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subsubbody}{fg=white}%
+    \setbeamercolor*{description body}{fg=white}%
+    \setbeamercolor{math text}{fg=white}%
+    \setbeamercolor{caption}{fg=white}%
+}
+
+
+\define@key{beamerframe}{AUGreen}[true]{%
+    \color{white}
+    \setbeamertemplate{frametitle}[AUWhite]%
+    \setbeamertemplate{footline}[AUWhite]%
+    \setbeamercolor*{background canvas}{bg=AUGreen,fg=white}%
+    \setbeamercolor*{structure}{fg=white}%
+    \setbeamercolor*{itemize/enumerate body}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subbody}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subsubbody}{fg=white}%
+    \setbeamercolor*{description body}{fg=white}%
+    \setbeamercolor{math text}{fg=white}%
+    \setbeamercolor{caption}{fg=white}%
+}
+
+\define@key{beamerframe}{AUMagenta}[true]{%
+    \color{white}
+    \setbeamertemplate{frametitle}[AUWhite]%
+    \setbeamertemplate{footline}[AUWhite]%
+    \setbeamercolor*{background canvas}{bg=AUMagenta,fg=white}%
+    \setbeamercolor*{structure}{fg=white}%
+    \setbeamercolor*{itemize/enumerate body}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subbody}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subsubbody}{fg=white}%
+    \setbeamercolor*{description body}{fg=white}%
+    \setbeamercolor{math text}{fg=white}%
+    \setbeamercolor{caption}{fg=white}%
+}
+
+\define@key{beamerframe}{AUDarkClean}[true]{%
+    \color{white}
+    \setbeamertemplate{frametitle}[AUWhite]%
+    \setbeamertemplate{footline}{}%
+    \setbeamercolor*{background canvas}{bg=AUDark,fg=white}%
+    \setbeamercolor*{structure}{fg=white}%
+    \setbeamercolor*{itemize/enumerate body}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subbody}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subsubbody}{fg=white}%
+    \setbeamercolor*{description body}{fg=white}%
+    \setbeamercolor{caption}{fg=white}%
+    \setbeamercolor{math text}{fg=white}%
+    \setbeamercolor{footnote}{fg=white}%
+}
+
+\define@key{beamerframe}{AUAcademics}[true]{%
+    \color{white}
+    \setbeamertemplate{frametitle}[AUWhite]%
+    \setbeamertemplate{footline}[AUWhite]%
+    \setbeamercolor*{background canvas}{bg=AULight,fg=white}%
+    \setbeamercolor*{structure}{fg=white}%
+    \setbeamercolor*{itemize/enumerate body}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subbody}{fg=white}%
+    \setbeamercolor*{itemize/enumerate subsubbody}{fg=white}%
+    \setbeamercolor*{description body}{fg=white}%
+    \setbeamercolor{math text}{fg=white}%
+    \setbeamercolor{caption}{fg=white}%
+}
+
+\define@key{beamerframe}{AUClean}[true]{%
+    \setbeamertemplate{footline}{}% 
+}
+
+\makeatother
+
+% Resetting the frame style 
+\BeforeBeginEnvironment{frame}{%
+
+    \setbeamertemplate{frametitle}[AUDark]%
+    \setbeamertemplate{footline}[AUDark]%
+    \setbeamercolor*{background canvas}{bg=white,fg=AUDark}%
+    \setbeamercolor*{normal text}{bg=white,fg=AUDark}%
+    \setbeamercolor*{structure}{bg=white,fg=AUDark}%
+    \setbeamercolor*{itemize/enumerate body}{fg=AUDark}%
+    \setbeamercolor*{itemize/enumerate subbody}{fg=AUDark}%
+    \setbeamercolor*{itemize/enumerate subsubbody}{fg=AUDark}%
+    \setbeamercolor*{description body}{fg=AUDark}%
+    \setbeamercolor{caption}{fg=AUDark}%
+    \setbeamercolor{footnote}{fg=AUDark}%
+    \setbeamercolor{math text}{fg=black}%
+    \color{AUDark}
+    
+    \setbeamertemplate{description item}{%
+        \bf\insertdescriptionitem\hfill
+    }
+}
+
+%%%% TITLE PAGE AND TITLE FOOTER
+
+\defbeamertemplate*{title page}{aarhusuniversity}[1][]
+{ 
+    \begin{textblock}{14}[0,1](1,5)%
+        {\color{white}
+        \bf{\Huge\MakeUppercase\inserttitle\\\vspace{0.3em}\large\insertshorttitle}}
+    \end{textblock}
+    
+    \begin{textblock}{10}[0,0](1,5)%
+       \vspace{1em}{\color{white}\textlight{\insertauthor\hspace{0.5em}\insertshortauthor}}
+    \end{textblock}
+}
+
+\defbeamertemplate{footline}{AUTitle}{%
+    \begin{textblock}{5}[0.5,0](6.9,8.7)%
+        {\color{white}\hfill\insertdate}
+    \end{textblock}
+        
+    \begin{textblock}{0}[0,1](0,8.8)%
+       \AUDKLogo[2.1em]{white}
+        \end{textblock}
+        \begin{textblock}{10}[0,1](1.1,8.5)%
+        {\color{white}AARHUS}
+    \end{textblock}
+    
+    \begin{textblock}{10}[0,1](1.1,8.75)%
+        {\color{white}UNIVERSITY}
+    \end{textblock}
+    
+    \begin{textblock}{10}[0,1](1.1,9)%
+        {\color{white}\fontsize{4}{0}\selectfont\textlight{\insertinstitute}}
+    \end{textblock}
+    
+    \begin{textblock}{1}[0.5,1](15.9,9)%
+        \AUDKSeal[3.5em]{white}
+    \end{textblock}
+}
+
+
+%% Script to ensure that the title page is styled correctly
+\makeatletter
+\def\ps@navigation@titlepage{%
+  \setbeamertemplate{footline}[AUTitle]
+  \setbeamercolor{background canvas}{bg=AUDark}
+  
+  \@nameuse{ps@navigation}}
+\addtobeamertemplate{title page}{\thispagestyle{navigation@titlepage}}{}
+\makeatother
+
+\AtBeginSection[] % 
+{
+\begin{frame}\frametitle{Outline}
+    \tableofcontents[currentsection]
+\end{frame}
+}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip\itemsep}
+  {}
+ {}
+\makeatother  
+
+\setbeamertemplate{section in toc}{%
+    {\color{AUDark}\bf\inserttocsectionnumber.~\inserttocsection}%
+    \vspace{2pt}
+}
+
+%% Captions styling
+\setlength\abovecaptionskip{2pt}
+
+\setbeamertemplate{caption}{%
+    {\tiny\insertcaptionname ~\insertcaptionnumber: \insertcaption}%
+}
+%% Footnote styling
+\setbeamerfont{footnote}{size=\tiny}
+
+
+\mode<all>
+

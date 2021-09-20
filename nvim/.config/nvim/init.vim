@@ -23,12 +23,11 @@ set shortmess+=c   " Shut off completion messages
 set completeopt-=preview
 set completeopt+=menuone,noselect
 colorscheme spaceway
-set makeprg=./run
+set makeprg=make\ %:r.pdf
 "}}}
-
 "Vanilla bindings{{{
 "Spell
-set spelllang=en_us
+set spelllang=en_us,da
 map <F5> :set spell!<CR>
 
 noremap <leader>gf :e <cfile><cr>
@@ -43,7 +42,7 @@ nnoremap <C-s> :b
 nnoremap <esc> :noh<return><esc>
 
 map <leader>c :w \| !compile %<CR>
-autocmd FileType tex,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
+autocmd FileType tex,markdown,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
 
 nnoremap j gj
 nnoremap k gk
@@ -68,18 +67,16 @@ vim.cmd'packadd paq-nvim'
 local Paq = require'paq-nvim'    -- Module
 local paq = Paq.paq              -- Function
 paq{'savq/paq-nvim', opt=true}   -- Paq manages itself
-
+paq 'vim-pandoc/vim-pandoc-syntax'
 paq 'christoomey/vim-tmux-navigator'
 paq 'itchyny/lightline.vim'
 paq 'junegunn/vim-easy-align'
 paq 'gavinok/spaceway.vim'
-paq 'lilydjwg/colorizer'
 paq 'lifepillar/vim-mucomplete'
 paq 'editorconfig/editorconfig-vim'
 
 EOF
 "}}}
-
 "PLUGIN CONFIG{{{
 
 "EASYALIGN
@@ -148,8 +145,6 @@ nnoremap <leader>t  :ter<CR>
 nnoremap <leader>vt :vsp \| ter<CR>
 
 "}}}
-
-
 "Octave{{{
 augroup filetypedetect
   au! BufRead,BufNewFile *.m,*.oct set filetype=octave
@@ -161,3 +156,8 @@ autocmd TermOpen * startinsert
 
 autocmd BufNewFile,BufRead vifmrc set ft=vim
 
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=tex.markdown.pandoc
+augroup END
+
+let g:pandoc#syntax#conceal#use = 0

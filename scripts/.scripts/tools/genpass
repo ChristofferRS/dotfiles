@@ -2,14 +2,15 @@
 
 somefunc(){
 notify-send "Creating New password web/$selected/$username"
-pass generate -c "web/$selected/$username"
+printf "\nuser: $username" | pass insert -m "web/$selected/$username"
+pass generate -i -c "web/$selected/$username"
 }
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
 password_files=$(fd .gpg --base-directory="$prefix" -x printf "{.}\n")
 
-selected="${1#*.}"
-username="$(printf "Username for $selected" | dmenu -i -p "$1" )"
-
+#selected="${1#*.}"
+selected="$(printf "\n" | dmenu -i -p "Web address" )"
+username="$(printf "\n" | dmenu -i -p "username for $selected" )"
 if $(printf "$password_files" | grep -qi "$selected/$username"); then
     promt "Password exists" && somefunc
 else

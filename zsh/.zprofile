@@ -8,6 +8,10 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/X11/xinitrc"
 
+export TEXMFHOME=$XDG_DATA_HOME/texmf
+export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
+export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
+
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 #export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}"/gnupg
@@ -27,7 +31,7 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 
 export NNN_OPTS="e"
 export NNN_COLORS='4231'
-export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/6.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/'
+export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/7.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Syncthing/AU/Arbejde/'
 export NNN_PLUG='o:fzopen;f:fzcd'
 
 export DOTREMINDERS=~/Syncthing/rems/reminders.rem

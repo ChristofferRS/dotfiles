@@ -4,3 +4,5 @@ image/*; xdg-open %s ;
 video/*; setsid mpv --quiet %s &; copiousoutput
 audio/*; mpv %s ;
 application/pdf; xdg-open %s ;
+image/png; xdg-open %s ;
+image/jpg; xdg-open %s ;
