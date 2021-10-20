@@ -1,0 +1,2 @@
+#!/bin/sh
+smbclient //prt11.uni.au.dk/$1 -U au618187 -W uni -c "print $2"

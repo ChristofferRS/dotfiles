@@ -23,7 +23,7 @@ SyncState *
 IMAPStore postau-remote
 Host post.au.dk
 User au618187
-PassCmd "pass show web/au.dk/au618187@uni.au.dk | head -n1"
+PassCmd "pass show web/au.dk | head -n1"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 

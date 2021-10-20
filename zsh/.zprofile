@@ -14,7 +14,7 @@ export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
 
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 #export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
-export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}"/gnupg
+#export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}"/gnupg
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc

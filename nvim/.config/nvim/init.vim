@@ -86,10 +86,11 @@ nmap ga <Plug>(EasyAlign)
 "MUCOMPLETE
 let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#completion_delay = 1
+let g:mucomplete#buffer_relative_paths = 1
 let g:mucomplete#chains = {
 \ 'default' : ['path', 'omni', 'keyn', 'dict', 'uspl'],
 \ 'vim'     : ['path', 'cmd', 'keyn'],
-\ 'latex'     : ['cmd', 'uspl', 'keyn']
+\ 'tex'     : ['c-n', 'uspl', 'keyn','path']
 \ }
 imap <expr> <down> mucomplete#extend_fwd("\<down>")
 

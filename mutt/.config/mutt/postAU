@@ -1,10 +1,10 @@
 #set folder="imaps://au618187@post.au.dk/"
 set folder="~/.local/share/mail/postau/"
 set imap_user="au618187"
-set imap_pass = `pass show web/au.dk/au618187@uni.au.dk`
+set imap_pass = `pass show web/au.dk`
 
 set smtp_url="smtp://201807461@post.au.dk:587"
-set smtp_pass = `pass show web/au.dk/au618187@uni.au.dk`
+set smtp_pass = `pass show web/au.dk`
 set ssl_force_tls = yes
 set ssl_starttls = yes
 

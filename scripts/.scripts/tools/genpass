@@ -2,8 +2,8 @@
 
 somefunc(){
 notify-send "Creating New password web/$selected/$username"
-printf "\nuser: $username" | pass insert -m "web/$selected/$username"
-pass generate -i -c "web/$selected/$username"
+printf "\nuser: $username\nurl: https://$selected" | pass insert -m "web/$selected"
+pass generate -i -c "web/$selected"
 }
 prefix=${PASSWORD_STORE_DIR-~/.password-store}
 password_files=$(fd .gpg --base-directory="$prefix" -x printf "{.}\n")
