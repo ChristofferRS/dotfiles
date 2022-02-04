@@ -1,4 +1,5 @@
 export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/"
+export npm_config_prefix="$HOME/.local"
 export EDITOR="nvim"
 export TERMINAL="st"
 
@@ -35,6 +36,11 @@ export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/7.semester/;d:~/Downloads
 export NNN_PLUG='o:fzopen;f:fzcd'
 
 export DOTREMINDERS=~/Syncthing/rems/reminders.rem
+
+export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+    nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
 #StartX if not running in tty
 [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"

@@ -16,7 +16,7 @@ Far :gmail-remote:
 Near :gmail-local:
 Create Both
 Expunge Both
-Patterns *
+Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
 SyncState *
 
 

@@ -8,11 +8,12 @@ reddit(){
     useragent="chris"
     timeout=30
 
-    sort=$2
-    top_time=$3
+    sort=$3
+    top_time=$2
     [ -z $sort ] && sort="top"
     [ -z $top_time ] && top_time="month"
     sub=$1
+    echo "Top-time: $top_time"
     echo "Downloading from $sub"
 
     url="https://www.reddit.com/r/$sub/$sort/.json?raw_json=1&t=$top_time"
@@ -26,6 +27,7 @@ reddit(){
     arrIDS=($ids)
     wait # prevent spawning too many processes
     size=${#arrURLS[@]}
+    echo $size
     [ $size -eq 0 ] && echo "The current subreddit is not valid." && exit 1
     idx=$(($RANDOM % $size))
     target_url=${arrURLS[$idx]}
@@ -106,10 +108,12 @@ while getopts "h:w:s:l:b:r:c:d:m" o; do case "${o}" in
     *) echo "Unexpected option: $1 - this should not happen." ; usage ;;
 esac done
 
+shift $(expr $OPTIND - 1 )
+
 if [ ! -z $dir ]; then
     select_random_wallpaper
 elif [ $link = "reddit" ] || [ ! -z $sub ]; then
-    reddit "$sub"
+    reddit "$sub" $1
 else
     unsplash
 fi

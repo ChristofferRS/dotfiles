@@ -58,9 +58,11 @@ inoremap ;sp \begin{split}<Enter>\end{split}<Enter><++><Esc>?it}<Enter>O
 inoremap ;e $$<++><Esc>F$i
 inoremap ;eq \begin{equation*}<Enter>\end{equation*}<Enter><Enter><++><Esc>?tion<Enter>O
 inoremap ;eqn \begin{equation}\label{eq:}<Enter><++><Enter>\end{equation}<Enter><++><Esc>?:<Enter>a
-inoremap ;ga \begin{gathered}<Enter>\end{gathered}<Esc>?red<Enter>O
+inoremap ;ga \begin{gather*}<Enter>\end{gather*}<Enter><Enter><++><Esc>?ther<Enter>O
+inoremap ;gan \begin{gather}\label{eq:}<Enter><++><Enter>\end{gather}<Enter><++><Esc>?:<Enter>a
 
 
+inoremap ;co \begin{columns}<Enter>\begin{column}{}<Enter><++><Enter>\end{column}<Enter><Enter>\begin{column}{<++>}<Enter><++><Enter>\end{column}<Enter><Enter>\end{columns}<Enter><++><Esc>?{}<Enter>a
 
 "}}}
 

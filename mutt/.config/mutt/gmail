@@ -12,7 +12,7 @@ set trash = "+[Gmail]/Papirkurv"
 set postponed = "+[Gmail]/Kladder"
 
 named-mailboxes "====== Gmail ======" "+INBOX"
-mailboxes ="[Gmail]/Sendte mails" =[Gmail]/Papirkurv =[Gmail]/Kladder =Ordre ="[Gmail]/Alle mails" =Hjem
+mailboxes ="[Gmail]/Sendte mails" ="[Gmail]/Papirkurv" ="[Gmail]/Kladder" =Ordre ="[Gmail]/Alle mails" =Hjem
 
 set from="christoffer143@gmail.com"
 set realname="Christoffer Søndergaard"

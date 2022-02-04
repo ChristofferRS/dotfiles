@@ -5,6 +5,7 @@ picom -b --config .config/picom/picom.conf
 #Start he bar
 dwmblocks &
 dunst &
+/usr/lib/kdeconnectd &
 #transmission-daemon &
 #exec bspwm
 # Start dwm

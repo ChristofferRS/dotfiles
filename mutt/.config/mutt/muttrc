@@ -5,7 +5,7 @@ source ~/.config/mutt/postAU
 folder-hook $folder 'source ~/.config/mutt/postAU'
 set mbox_type=Maildir
 
-set signature="~/.config/mutt/signature"
+#set signature="~/.config/mutt/signature"
 set mailcap_path 	= ~/.config/mutt/mailcap
 set sort = 'reverse-date'
 set sleep_time = 0		# Pause 0 seconds for informational messages

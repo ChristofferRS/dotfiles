@@ -1,6 +1,6 @@
 #!/bin/sh
 connect(){
-    bluetoothctl -- devices | dmenu | cut -d" " -f2 | xargs bluetoothctl -- connect
+    bluetoothctl -- power on >/dev/null && bluetoothctl -- devices | dmenu | cut -d" " -f2 | xargs bluetoothctl -- connect
 }
 disconnect(){
     bluetoothctl -- devices | dmenu | cut -d" " -f2 | xargs bluetoothctl -- disconnect
