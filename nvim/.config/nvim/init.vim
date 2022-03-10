@@ -23,6 +23,7 @@ set shortmess+=c   " Shut off completion messages
 set completeopt=longest,menuone,noinsert,noselect
 colorscheme spaceway
 set makeprg=make\ %:r.pdf
+map <C-c> :w \| make<CR>
 "}}}
 "Vanilla bindings{{{
 "Spell
@@ -70,6 +71,8 @@ require "paq" {
 'junegunn/vim-easy-align';
 'gavinok/spaceway.vim';
 'editorconfig/editorconfig-vim';
+{'junegunn/fzf',  run=vim.fn["fzf#install()"]},
+'junegunn/fzf.vim',
 {'neoclide/coc.nvim', branch='release'}
 }
 EOF
@@ -235,6 +238,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "}}}
 
+nmap <C-p> :Files<CR>
+nmap <C-q> :Buffers<CR>
 
 "}}}
 "QuicFix{{{

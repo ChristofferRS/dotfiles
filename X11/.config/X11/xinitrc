@@ -1,14 +1,15 @@
 exec ~/.fehbg &
 [ -f ~/.config/X11/xresources ] && xrdb -load ~/.config/X11/xresources
 #Start conpositor
-picom -b --config .config/picom/picom.conf
 #Start he bar
+picom -b --config .config/picom/picom.conf
 dwmblocks &
 dunst &
-/usr/lib/kdeconnectd &
+#/usr/lib/kdeconnectd &
 #transmission-daemon &
 #exec bspwm
 # Start dwm
+#exec leftwm
 while true; do
     ssh-agent dwm
 done
