@@ -1,0 +1,12 @@
+#!/bin/bash
+fil=~/.local/share/stillinger
+pgrepoutput="$(pgrep -a X\(org\|wayland\))"
+notify() { [ -n "$pgrepoutput" ] && for x in ${displays:-0:}; do
+        export DISPLAY=$x
+        notify-send "$1"
+    done ;}
+stil="$(curl -s "https://phys.au.dk/aktuelt/ledige-stillinger/" | grep -i "vacancies =" | cut -d= -f2 | tr , "\n" | grep title | cut -d\" -f4)"
+new=$( (printf "$stil\n"; cat $fil) | sort | uniq -u)
+
+[[ $new != "" ]] && notify "$new" && printf "$new" >> $fil
+
