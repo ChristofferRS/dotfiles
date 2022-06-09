@@ -1,0 +1,56 @@
+inoremap ;e $$<++><Esc>F$i
+inoremap ;eq {{$<Enter>}}$<Enter><++><Esc>kO
+inoremap ;al {{$%align%<Enter>}}$<Enter><++><Esc>kO
+inoremap ;ga {{$%gather%<Enter>}}$<Enter><++><Esc>kO
+"inoremap ;c \cdot
+inoremap <C-f> \frac{}{<++>}<++><Esc>F}F}i
+inoremap <C-l> _{}<++><Esc>F}i
+inoremap <C-h> ^{}<++><Esc>F}i
+"inoremap ;br \bra{}<++><Esc>F}i
+"inoremap ;ke \ket{}<++><Esc>F}i
+"inoremap ;bk \braket{}<++><Esc>F}i
+"inoremap ;pma \begin{pmatrix}<Enter>\end{pmatrix}<Enter><++><Esc>?rix<Enter>O
+"inoremap ;bma \begin{bmatrix}<Enter>\end{pmatrix}<Enter><++><Esc>?rix<Enter>O
+"inoremap <C-l> \left
+"inoremap <C-r> \right
+
+"greek_letters{{{
+
+
+inoremap <leader><leader>a \alpha
+inoremap <leader><leader>n \nu
+inoremap <leader><leader>b \beta
+inoremap <leader><leader>x \xi
+inoremap <leader><leader>X \Xi
+inoremap <leader><leader>g \gamma
+inoremap <leader><leader>G \Gamma
+inoremap <leader><leader>d \delta
+inoremap <leader><leader>D \Delta
+inoremap <leader><leader>e \epsilon
+inoremap <leader><leader>ve \varepsilon
+inoremap <leader><leader>r \rho
+inoremap <leader><leader>vr \varrho
+inoremap <leader><leader>z \zeta
+inoremap <leader><leader>s \sigma
+inoremap <leader><leader>S \Sigma
+inoremap <leader><leader>et \eta
+inoremap <leader><leader>t \tau
+inoremap <leader><leader>vth \vartheta
+inoremap <leader><leader>Th \Theta
+inoremap <leader><leader>th \theta
+inoremap <leader><leader>u \upsilon
+inoremap <leader><leader>U \Upsilon
+inoremap <leader><leader>i \iota
+inoremap <leader><leader>f \phi
+inoremap <leader><leader>F \Phi
+inoremap <leader><leader>vp \varphi
+inoremap <leader><leader>P \Phi
+inoremap <leader><leader>k \kappa
+inoremap <leader><leader>kh \chi
+inoremap <leader><leader>l \lambda
+inoremap <leader><leader>L \Lambda
+inoremap <leader><leader>P \psi
+inoremap <leader><leader>p \Psi
+inoremap <leader><leader>m \mu
+inoremap <leader><leader>o \omega
+inoremap <leader><leader>O \Omega

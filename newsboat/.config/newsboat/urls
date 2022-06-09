@@ -33,19 +33,19 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCaLoic4JDuHSoKmp4U4tU2Q "Yo
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg "YouTube"
 
 
-----------Lbry------------
-#Brodie Robertson
-https://lbryfeed.melroy.org/channel/odysee/BrodieRobertson:5  "Odysee"
-#Luke Smith
-https://lbryfeed.melroy.org/channel/odysee/Luke:7 "Odysee"
-#ElectroBOOM
-https://lbryfeed.melroy.org/channel/odysee/ElectroBOOM:9 "Odysee"
-#Kris Occhipinti
-https://lbryfeed.melroy.org/channel/odysee/metalx1000:c "Odysee"
-#TuxFoo
-https://lbryfeed.melroy.org/channel/odysee/tuxfoo:e "Odysee"
-#Art
-https://lbryfeed.melroy.org/channel/odysee/art:7 "Odysee"
+# ----------Lbry------------
+# #Brodie Robertson
+# https://lbryfeed.melroy.org/channel/odysee/BrodieRobertson:5  "Odysee"
+# #Luke Smith
+# https://lbryfeed.melroy.org/channel/odysee/Luke:7 "Odysee"
+# #ElectroBOOM
+# https://lbryfeed.melroy.org/channel/odysee/ElectroBOOM:9 "Odysee"
+# #Kris Occhipinti
+# https://lbryfeed.melroy.org/channel/odysee/metalx1000:c "Odysee"
+# #TuxFoo
+# https://lbryfeed.melroy.org/channel/odysee/tuxfoo:e "Odysee"
+# #Art
+# https://lbryfeed.melroy.org/channel/odysee/art:7 "Odysee"
 
 
 #Twitch
@@ -64,3 +64,5 @@ https://nat.au.dk/om-fakultetet/nyheder/rss.xml?element=557864 "~AU Nyheder"
 https://lukesmith.xyz/rss.xml
 https://landchad.net/rss.xml
 
+----------Podcast------------
+https://www.dr.dk/mu/feed/genstart.xml?format=podcast "Genstart"

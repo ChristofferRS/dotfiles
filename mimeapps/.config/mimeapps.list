@@ -1,0 +1,10 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop
+image/png=nsxiv.desktop
+image/jpg=nsxiv.desktop
+image/jpeg=nsxiv.desktop
+x-scheme-handler/lbry=lbry.desktop
+x-scheme-handler/magnet=torrent.desktop;
+application/x-bittorrent=torrent.desktop;
+application/gzip=xournalpp.desktop
+text/html=firefox.desktop

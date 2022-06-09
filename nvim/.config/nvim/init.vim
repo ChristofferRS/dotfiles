@@ -1,3 +1,18 @@
+"Plugins{{{
+call plug#begin()
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'gavinok/spaceway.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/fzf.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+call plug#end()
+
+"}}}
 "Settings{{{
 filetype plugin on
 syntax on
@@ -17,10 +32,10 @@ set wildmenu
 set wildignorecase
 set laststatus=2
 set linebreak
-
 "set colorcolumn=80
 set shortmess+=c   " Shut off completion messages
 set completeopt=longest,menuone,noinsert,noselect
+let g:gruvbox_contrast_dark = "hard"
 colorscheme spaceway
 set makeprg=make\ %:r.pdf
 map <C-c> :w \| make<CR>
@@ -32,12 +47,6 @@ map <F5> :set spell!<CR>
 
 noremap <leader>gf :e <cfile><cr>
 noremap gp :! xdg-open <cfile><cr><cr>
-
-nnoremap <leader>g :set operatorfunc=goperator#GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call goperator#GrepOperator(visualmode())<cr>
-
-nnoremap <C-p> :find *
-nnoremap <C-s> :b 
 
 nnoremap <esc> :noh<return><esc>
 
@@ -56,26 +65,10 @@ inoremap <F10> <C-o>:vsp $MYVIMRC<CR>
 nnoremap <F10> :vsp $MYVIMRC<CR>
 
 inoremap <C-w> <Esc>/<++><Enter>"_c4l
-noremap <C-w> /<++><Enter>"_c4l
+"noremap <C-w> /<++><Enter>"_c4l
 
 nnoremap <Space> za
 set foldmethod=marker
-"}}}
-"Plugins{{{
-lua << EOF
-require "paq" {
-{'savq/paq-nvim', opt=true};
-'vim-pandoc/vim-pandoc-syntax';
-'christoomey/vim-tmux-navigator';
-'itchyny/lightline.vim';
-'junegunn/vim-easy-align';
-'gavinok/spaceway.vim';
-'editorconfig/editorconfig-vim';
-{'junegunn/fzf',  run=vim.fn["fzf#install()"]},
-'junegunn/fzf.vim',
-{'neoclide/coc.nvim', branch='release'}
-}
-EOF
 "}}}
 "PLUGIN CONFIG{{{
 
@@ -101,11 +94,11 @@ endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? "\<C-n>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -260,31 +253,13 @@ endfunction
 
 nnoremap <leader>q :call QuickfixToggle()<cr>
 
-let g:NetrwIsOpen=0
-function! ToggleNetrw()
-    if g:NetrwIsOpen
-        let i = bufnr("$")
-        while (i >= 1)
-            if (getbufvar(i, '&filetype') == 'netrw')
-                silent exe 'bwipeout ' . i 
-            endif
-            let i-=1
-        endwhile
-        let g:NetrwIsOpen=0
-    else
-        let g:NetrwIsOpen=1
-        silent Vexplore
-    endif
-endfunction
 
 " Add your own mapping. For example:
 noremap <silent> <C-E> :call QuickfixToggle()<CR>
 
 
 let g:netrw_banner=0
-let g:netrw_browse_split = 4
 let g:netrw_liststyle = 3
-let g:netrw_winsize = 25
 
 nnoremap <leader>f :find 
 nnoremap <leader>p :bp<CR>
@@ -302,11 +277,20 @@ autocmd TermOpen * startinsert
 
 "}}}
 
+
+let g:vimwiki_list = [{'path': '~/Syncthing/AU/wiki/text/',
+            \ 'template_path': '~/Syncthing/AU/wiki/templates/',
+            \ 'path_html': '~/Syncthing/AU/wiki/html/',
+            \ 'template_default': 'default',
+            \ 'template_ext': '.html',
+            \ 'nested_syntaxes' : {'python': 'python'}}]
+", 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_markdown_link_ext=1
 autocmd BufNewFile,BufRead vifmrc set ft=vim
-au BufNewFile,BufRead *.ejs set filetype=html
 
 augroup pandoc_syntax
         au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc.tex
 augroup END
 
 let g:pandoc#syntax#conceal#use = 0
+

@@ -2,8 +2,8 @@ export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.loca
 export npm_config_prefix="$HOME/.local"
 export EDITOR="nvim"
 export TERMINAL="st"
-
-export BROWSER="firefox"
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export BROWSER="librewolf"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -12,6 +12,9 @@ export WINIT_X11_SCALE_FACTOR=1
 export TEXMFHOME=$XDG_DATA_HOME/texmf
 export TEXMFVAR=$XDG_CACHE_HOME/texlive/texmf-var
 export TEXMFCONFIG=$XDG_CONFIG_HOME/texlive/texmf-config
+export CARGO_HOME="$XDG_DATA_HOME"/cargo 
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 #export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
@@ -30,7 +33,7 @@ export LESSHISTFILE="-"
 export PASSWORD_STORE_DIR="$HOME/.password-store"
 export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 
-export NNN_OPTS="e"
+#export NNN_OPTS="e"
 export NNN_COLORS='4231'
 export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/8.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Syncthing/AU/Arbejde/'
 export NNN_PLUG='o:fzopen;f:fzcd'
