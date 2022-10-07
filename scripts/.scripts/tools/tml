@@ -3,7 +3,7 @@
 if [ $# -eq 1 ]; then
     selected=$1
 else
-    selected=$(fd . ~/S Syncthing/AU ~/Dokumenter/| fzf)
+    selected=$(fd . ~/S Syncthing/AU ~/Dokumenter/projects/| fzf)
 fi
 
 dirname=`basename $selected`
