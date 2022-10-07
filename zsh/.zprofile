@@ -35,7 +35,7 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 
 #export NNN_OPTS="e"
 export NNN_COLORS='4231'
-export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/8.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Syncthing/AU/Arbejde/'
+export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/9.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Syncthing/AU/Arbejde/'
 export NNN_PLUG='o:fzopen;f:fzcd'
 
 export DOTREMINDERS=~/Syncthing/rems/reminders.rem

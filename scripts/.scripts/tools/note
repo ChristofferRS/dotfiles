@@ -1,0 +1,41 @@
+#!/bin/sh
+set -e
+readonly NOTES_DIRECTORY=~/Syncthing/AU/9.semester/Speciale/notes
+readonly NOTES_FILE="$(date +%Y-%m).txt"
+readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
+
+readonly TODAY=$(date +%Y-%m-%d)
+readonly TODAY_TITLE=$(printf "# [%s]" $(date +%Y-%m-%d))
+
+readonly TS=$(printf "[%s]\t" $(date +%H:%M:%S))
+
+if [ ! -d "${NOTES_DIRECTORY}" ]; then
+    while true; do
+        printf "%s does not exist, do you want to create it? (y/n) " "${NOTES_DIRECTORY}"
+        read -r yn
+        case "${yn}" in
+            [Yy]* ) mkdir -p "${NOTES_DIRECTORY}"; break;;
+            [Nn]* ) exit;;
+            * ) printf "Please answer y or n\n\n";;
+        esac
+    done
+fi
+
+
+if [ -f "$NOTES_PATH" ];then
+    grep -q "$TODAY" "$NOTES_PATH" || printf "\n\n%s\n" "$TODAY_TITLE" >> "$NOTES_PATH"
+else
+    printf "%s\n" "$TODAY_TITLE" >> "$NOTES_PATH"
+fi
+
+
+if [ ${#} -eq 0 ]; then
+    if [ -p "/dev/stdin" ]; then
+        (printf "%s" "$TS"; cat) >> "${NOTES_PATH}"
+    else
+        printf "%s" "$TS" >> "${NOTES_PATH}"
+        eval "$EDITOR" "${NOTES_PATH}"
+    fi
+else
+    printf "%s%s\n" "$TS" "${*}" >> "${NOTES_PATH}"
+fi

@@ -7,10 +7,13 @@ else
 fi
 
 dirname=`basename $selected`
+selected=${selected%/}
+#tmux a -client -t $dirname
+#if [ $? -eq 0 ]; then
+#    exit 0
+#fi
 
-tmux a -client -t $dirname
-if [ $? -eq 0 ]; then
-    exit 0
-fi
-
-tmux new-session -c $selected -d -s $dirname && tmux a -t $dirname || tmux new -c $selected -A -s $dirname
+#tmux new-session -c $selected -d -s $dirname && tmux a -t $dirname || tmux new -c $selected -A -s $dirname
+echo "$dirname"
+echo "$selected"
+tmux new -c "$selected" -A -s "$dirname"

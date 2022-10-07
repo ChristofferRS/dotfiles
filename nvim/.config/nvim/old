@@ -1,121 +1,105 @@
-"Plugins{{{
 call plug#begin()
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'gavinok/spaceway.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf.vim'
-Plug 'vimwiki/vimwiki'
-Plug 'neoclide/coc.nvim', {'branch':'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
-"}}}
-"Settings{{{
+set foldmethod=marker
+set spelllang=en_us,da
+set makeprg=make\ %:r.pdf
+set completeopt=longest,menuone,noinsert,noselect
+set shortmess+=c   " Shut off completion messages
+set linebreak
+set laststatus=2
+set wildignorecase
+set wildmenu
+set number
+set relativenumber
+"set path+=**
+set smartcase
+set ignorecase
+set hidden
+set incsearch
+set smartindent
+set autoindent
+set shiftwidth=4
+set expandtab
+set tabstop=4 softtabstop=4
+
 filetype plugin on
 syntax on
-set tabstop=4 softtabstop=4
-set expandtab
-set shiftwidth=4
-set autoindent
-set smartindent
-set incsearch
-set hidden
-set ignorecase
-set smartcase
-set path+=**
-set relativenumber
-set number
-set wildmenu
-set wildignorecase
-set laststatus=2
-set linebreak
-"set colorcolumn=80
-set shortmess+=c   " Shut off completion messages
-set completeopt=longest,menuone,noinsert,noselect
-let g:gruvbox_contrast_dark = "hard"
-colorscheme spaceway
-set makeprg=make\ %:r.pdf
-map <C-c> :w \| make<CR>
-"}}}
-"Vanilla bindings{{{
-"Spell
-set spelllang=en_us,da
-map <F5> :set spell!<CR>
 
-noremap <leader>gf :e <cfile><cr>
-noremap gp :! xdg-open <cfile><cr><cr>
-
-nnoremap <esc> :noh<return><esc>
-
-map <leader>c :w \| !compile %<CR>
-autocmd FileType tex,markdown,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
-
-nnoremap j gj
-nnoremap k gk
-
-vnoremap <leader>p "_dP
-
+nnoremap <leader>cc :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
+nnoremap <Space> za
+nnoremap <F10> :vsp $MYVIMRC<CR>
 nnoremap <F1> :echo<CR>
+nnoremap k gk
+nnoremap j gj
+nnoremap <esc> :noh<return><esc>
+nnoremap <leader>gf :e <cfile><cr>
+nnoremap gp :! xdg-open <cfile><cr><cr>
+nnoremap <C-c> :w \| make<CR>
+nnoremap <F5> :set spell!<CR>
+nnoremap <leader>c :w \| !compile %<CR>
+"noremap <C-w> /<++><Enter>"_c4l
+"
+noremap <C-p> :Files<CR>
+noremap <C-q> :Buffers<CR>
+
+"set termguicolors     " enable true colors support
+colorscheme spaceway
+
+autocmd FileType tex,markdown,rmd,nroff map <F2> :!zathura %:r.pdf &<CR><CR>
+vnoremap <leader>p "_dP
+inoremap <C-w> <Esc>/<++><Enter>"_c4l
+inoremap <F10> <C-o>:vsp $MYVIMRC<CR>
 inoremap <F1> <C-o>:echo<CR>
 
-inoremap <F10> <C-o>:vsp $MYVIMRC<CR>
-nnoremap <F10> :vsp $MYVIMRC<CR>
 
-inoremap <C-w> <Esc>/<++><Enter>"_c4l
-"noremap <C-w> /<++><Enter>"_c4l
 
-nnoremap <Space> za
-set foldmethod=marker
-"}}}
-"PLUGIN CONFIG{{{
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
 
-"EASYALIGN
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-"COMPLETE{{{
-
-" Give more space for displaying messages.
-set cmdheight=2
-set updatetime=1000
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-"inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? "\<C-n>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-"" Use <c-space> to trigger completion.
-"if has('nvim')
-"  inoremap <silent><expr> <c-space> coc#refresh()
-"else
-"  inoremap <silent><expr> <c-@> coc#refresh()
-"endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -129,15 +113,13 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -163,6 +145,8 @@ augroup end
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+nmap <leader>ga  <Plug>(coc-codeaction-cursor)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -195,8 +179,8 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-"nmap <silent> <C-s> <Plug>(coc-range-select)
-"xmap <silent> <C-s> <Plug>(coc-range-select)
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
@@ -210,7 +194,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -229,68 +213,3 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-"}}}
-
-nmap <C-p> :Files<CR>
-nmap <C-q> :Buffers<CR>
-
-"}}}
-"QuicFix{{{
-
-let g:quickfix_is_open = 0
-
-function! QuickfixToggle()
-    if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
-    else
-        let g:quickfix_return_to_window = winnr()
-        copen
-        let g:quickfix_is_open = 1
-    endif
-endfunction
-
-nnoremap <leader>q :call QuickfixToggle()<cr>
-
-
-" Add your own mapping. For example:
-noremap <silent> <C-E> :call QuickfixToggle()<CR>
-
-
-let g:netrw_banner=0
-let g:netrw_liststyle = 3
-
-nnoremap <leader>f :find 
-nnoremap <leader>p :bp<CR>
-nnoremap <leader>n :bn<CR>
-nnoremap <leader>t  :ter<CR>
-nnoremap <leader>vt :vsp \| ter<CR>
-
-"}}}
-"Octave{{{
-augroup filetypedetect
-  au! BufRead,BufNewFile *.m,*.oct set filetype=octave
-augroup END
-nnoremap <F1> :terminal octave --persist %<CR>
-autocmd TermOpen * startinsert
-
-"}}}
-
-
-let g:vimwiki_list = [{'path': '~/Syncthing/AU/wiki/text/',
-            \ 'template_path': '~/Syncthing/AU/wiki/templates/',
-            \ 'path_html': '~/Syncthing/AU/wiki/html/',
-            \ 'template_default': 'default',
-            \ 'template_ext': '.html',
-            \ 'nested_syntaxes' : {'python': 'python'}}]
-", 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_markdown_link_ext=1
-autocmd BufNewFile,BufRead vifmrc set ft=vim
-
-augroup pandoc_syntax
-        au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc.tex
-augroup END
-
-let g:pandoc#syntax#conceal#use = 0
-
