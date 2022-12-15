@@ -1,9 +1,9 @@
 local cmp = require('cmp')
-
+local ls = require('luasnip')
 cmp.setup({
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            ls.lsp_expand(args.body) -- For `luasnip` users.
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -12,23 +12,34 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if ls.expand_or_jumpable() then
+                ls.expand_or_jump()
+            elseif cmp.visible() then
+                cmp.confirm({ select = true})
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-         { name = 'luasnip' },
+        { name = 'luasnip' },
         { name = 'path' },
         { name = 'buffer',keyword_length=5 },
     })
 })
 
 -- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        { name = 'buffer' },
-    })
-})
+-- cmp.setup.filetype('gitcommit', {
+--     sources = cmp.config.sources({
+--         { name = 'buffer' },
+--     })
+-- })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -65,4 +76,4 @@ require('lspconfig')['rust_analyzer'].setup{
     cmd = { "rustup", "run", "nightly", "rust-analyzer" },
 }
 
-
+require('lspconfig')['pyright'].setup{}

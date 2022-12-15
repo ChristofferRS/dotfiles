@@ -1,9 +1,10 @@
 export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/"
 export npm_config_prefix="$HOME/.local"
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
+export TERM=xterm-256color
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
-export BROWSER="librewolf"
+export DBROWSER="firefox"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -40,6 +41,8 @@ export NNN_PLUG='o:fzopen;f:fzcd'
 
 export DOTREMINDERS=~/Syncthing/rems/reminders.rem
 
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+
 #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 #    nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
 #    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
@@ -47,3 +50,5 @@ export DOTREMINDERS=~/Syncthing/rems/reminders.rem
 #
 #StartX if not running in tty
 [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+#
+#[ "$(tty)" = "/dev/tty1" ] && exec sway

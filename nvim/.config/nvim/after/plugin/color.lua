@@ -1,1 +1,2 @@
-vim.cmd("colorscheme spaceway")
+vim.g.ayucolor="dark"
+vim.cmd("colorscheme ayu")

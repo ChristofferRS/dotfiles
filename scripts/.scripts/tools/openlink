@@ -1,9 +1,9 @@
 #!/bin/sh
 case "$1" in
-	*mkv|*webm|*mp4*|*mp3*|*twitch*|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
+	*mkv|*webm|*mp4*|*mp3*|*twitch*|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*|*dr.dk/lyd*)
 		setsid -f mpv -quiet --player-operation-mode=pseudo-gui "$1" >/dev/null 2>&1 ;;
 	*png|*jpg|*jpe|*jpeg|*gif)
 		curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 & ;;
     *)
-        setsid -f $BROWSER "$1" 2>&1;;
+        setsid -f $DBROWSER "$1" 2>&1;;
 esac

@@ -1,0 +1,9 @@
+sfeedpath="$HOME/.local/share/sfeed"
+
+# list of feeds to fetch:
+feeds() {
+# feed <name> <feedurl> [basesiteurl] [encoding]
+    feed "Genstart" "https://api.dr.dk/podcasts/v1/feeds/genstart.xml?format=podcast"
+    feed "SlotsHolmen" "https://api.dr.dk/podcasts/v1/feeds/slotsholmen.xml?format=podcast"
+}
+
