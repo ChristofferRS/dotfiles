@@ -1,4 +1,4 @@
-export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/"
+export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${home}/.local/bin/:$CARGO_HOME/bin"
 export npm_config_prefix="$HOME/.local"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
@@ -23,7 +23,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/build/topas/libexternal
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/
 export TOPAS_G4_DATA_DIR=~/build/geant4-data
 export OCTAVE_HISTFILE="$XDG_CACHE_HOME/octave-hsts"
 export OCTAVE_SITE_INITFILE="$XDG_CONFIG_HOME/octave/octaverc"
@@ -36,7 +36,7 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 
 #export NNN_OPTS="e"
 export NNN_COLORS='4231'
-export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/9.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Syncthing/AU/Arbejde/'
+export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/10.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Syncthing/AU/Arbejde/'
 export NNN_PLUG='o:fzopen;f:fzcd'
 
 export DOTREMINDERS=~/Syncthing/rems/reminders.rem

@@ -1,10 +1,11 @@
 exec ~/.fehbg &
-[ -f ~/.config/X11/xresources ] && xrdb -load ~/.config/X11/xresources
+[ -f ~/.config/X11/xresources ] && xrdb -load ~/.config/X11/xresources &
 #Start conpositor
 #Start he bar
-picom -b --config .config/picom/picom.conf
+picom -b --config .config/picom/picom.conf &
 dwmblocks &
 dunst &
+kwalletd5 &
 #/usr/lib/kdeconnectd &
 transmission-daemon &
 #exec bspwm

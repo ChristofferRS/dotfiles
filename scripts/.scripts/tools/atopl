@@ -1,0 +1,10 @@
+#!/bin/sh
+url="$(printf "\n" | dmenu -i -p "Url" )"
+[ $url ] || exit
+sta="$(printf "\n" | dmenu -i -p "Start time" )"
+end="$(printf "\n" | dmenu -i -p "End time" )"
+sta=${sta:-0}
+end=${end:-inf}
+tcode=""
+tcode=$(echo "--download-section \"*$sta-$end\"")
+echo "$url" $tcode > ~/Dokumenter/music/music.txt

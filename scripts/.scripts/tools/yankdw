@@ -1,12 +1,21 @@
 #!/bin/sh
-if [ $# -eq 0 ]; then
-    url=$(xclip -o)
+#
+PDIR=~/Dokumenter/music/playlists
+url=$(xclip -o)
+name=$(yt-dlp --no-playlist "$url" -O "%(title)s")
+plist="$(ls $PDIR | dmenu -i -p "Playlist" )"
+sta="$(printf "\n" | dmenu -i -p "Start time" )"
+end="$(printf "\n" | dmenu -i -p "End time" )"
+sta=${sta:-0}
+end=${end:-inf}
+
+if [[ $sta -eq 0 && $end -eq "inf" ]]; then
+    tcode=""
 else
-    url="$1"
+    tcode=$(echo "--download-sections \"*$sta-$end\"")
 fi
 
-name=$(youtube-dl --no-playlist -e "$url")
-notify-send "Downloading $name"
-
-youtube-dl --no-playlist --embed-thumbnail --add-metadata -qix -f bestaudio/best --audio-format mp3 -o "~/Dokumenter/music/%(title)s.%(ext)s" "$url" && notify-send "✅ $name"
-
+notify-send "Adding $name"
+echo "$url" $tcode >> ~/Dokumenter/music/misc/music.txt
+#~/Dokumenter/music/misc/ytpl && notify-send "✅ $name" \
+#    && [ $plist ] && echo "$name" > $PDIR/$plist \

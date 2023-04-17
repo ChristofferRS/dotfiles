@@ -28,3 +28,4 @@ require("luasnip").config.set_config({
 })
 
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets"})
+ls.filetype_extend("vimwiki", {"tex", "markdown"})

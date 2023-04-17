@@ -8,10 +8,14 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/nvim-cmp'
-    use {'L3MON4D3/LuaSnip', after = 'nvim-cmp'}
+    use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    use 'junegunn/vim-easy-align'
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
+    use 'ThePrimeagen/harpoon'
+--    use('nvim-treesitter/nvim-treesitter', {run =':TSUpdate'})
 end)

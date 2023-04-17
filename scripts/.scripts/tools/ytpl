@@ -1,0 +1,5 @@
+#!/bin/bash
+xargs -L 1 -a ~/Dokumenter/music/misc/music.txt \
+    tsp yt-dlp --add-metadata -i -x -f bestsaudio/best -o "~/Dokumenter/music/%(title)s.%(ext)s" \
+    --download-archive ~/Dokumenter/music/misc/.downloads\
+    --no-playlist --embed-thumbnail
