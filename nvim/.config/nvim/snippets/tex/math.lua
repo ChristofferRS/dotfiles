@@ -37,7 +37,7 @@ return
 {
     s("ff", fmta("\\frac{<>}{<>}",{i(1),i(2)})),
     s("df", fmta("\\dfrac{<>}{<>}",{i(1),i(2)})),
-    s({trig = "_",wordTrig = false}, fmta("_{<>}",{i(1)})),
+    s({trig = "__",wordTrig = false}, fmta("_{<>}",{i(1)})),
     s({trig = "^",wordTrig = false}, fmta("^{<>}",{i(1)})),
     s({trig = "ll",wordTrig = true}, 
         fmta("\\left<> <> \\right<>",

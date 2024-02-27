@@ -1,8 +1,8 @@
-export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${home}/.local/bin/:$CARGO_HOME/bin"
+export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/:$CARGO_HOME/bin"
 export npm_config_prefix="$HOME/.local"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export TERM=xterm-256color
+export TERM="xterm"
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export DBROWSER="firefox"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -36,10 +36,10 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 
 #export NNN_OPTS="e"
 export NNN_COLORS='4231'
-export NNN_BMS='h:~;A:~/Syncthing/AU/;n:~/Syncthing/AU/10.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Syncthing/AU/Arbejde/'
+export NNN_BMS='h:~;A:~/Nextcloud/Syncthing/AU/;n:~/Nextcloud/Syncthing/AU/10.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Nextcloud/Syncthing/AU/Arbejde/'
 export NNN_PLUG='o:fzopen;f:fzcd'
 
-export DOTREMINDERS=~/Syncthing/rems/reminders.rem
+export DOTREMINDERS=~/Nextcloud/Syncthing/rems/reminders.rem
 
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 

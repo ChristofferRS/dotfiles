@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-readonly NOTES_DIRECTORY=~/Syncthing/AU/10.semester/masters/notes/
+readonly NOTES_DIRECTORY=~/Dokumenter/projects/masters/notes/
 readonly NOTES_FILE="$(date +%Y-%m).md"
 readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
 

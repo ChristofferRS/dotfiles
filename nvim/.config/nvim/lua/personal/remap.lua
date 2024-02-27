@@ -20,6 +20,6 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
   callback = function() vim.api.nvim_set_keymap("n","<F2>", ":!zathura %:r.pdf &<CR><CR>",opts) end,
 })
 
-vim.api.nvim_set_keymap("i","<C-w>", "<Esc>/<++><Enter>\"_c4l",opts)
+-- vim.api.nvim_set_keymap("i","<C-w>", "<Esc>/<++><Enter>\"_c4l",opts)
 vim.api.nvim_set_keymap("i","<F10>", "<C-o>:vsp $MYVIMRC<CR>",opts)
 vim.api.nvim_set_keymap("i","<F1>", "<C-o>:echo<CR>",opts)

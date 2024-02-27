@@ -17,5 +17,5 @@ return require('packer').startup(function(use)
     use 'junegunn/vim-easy-align'
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use 'ThePrimeagen/harpoon'
---    use('nvim-treesitter/nvim-treesitter', {run =':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', {run =':TSUpdate'})
 end)

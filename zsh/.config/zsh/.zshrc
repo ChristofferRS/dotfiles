@@ -39,7 +39,7 @@ alias vim='nvim'
 alias grep='grep --color=auto'
 #alias python='/usr/bin/python3'
 alias sp='sudo pacman'
-alias vpn='pass show web/au.dk | sudo openconnect https://remote.au.dk/au-access -u au618187@uni.au.dk --passwd-on-stdin'
+alias vpn='echo "$(pass show web/au.dk | head -n1)\n$(pass otp web/au.dk)" | sudo openconnect https://remote.au.dk/au-access -u au618187@uni.au.dk --passwd-on-stdin'
 alias wget='wget --no-hsts'
 alias bb='wget --no-hsts --user au618187 --ask-password'
 alias yta='yt-dlp --add-metadata -i -x -f bestaudio/best -o "%(title)s.%(ext)s"'
@@ -74,3 +74,5 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+
+[ -f "/home/chris/.ghcup/env" ] && source "/home/chris/.ghcup/env" # ghcup-env

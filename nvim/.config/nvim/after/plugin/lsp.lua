@@ -77,3 +77,11 @@ require('lspconfig')['rust_analyzer'].setup{
 }
 
 require('lspconfig')['pyright'].setup{}
+
+
+require'lspconfig'.tsserver.setup{}
+
+
+require'lspconfig'.phpactor.setup{}
+
+require'lspconfig'.gopls.setup{}
