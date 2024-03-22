@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+
+
+area="$(slurp)"
+printf "" | bemenu -p 'Name' | xargs -I{} grim -g "$area" /home/chris/Pictures/{}.png

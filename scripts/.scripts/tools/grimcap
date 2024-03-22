@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+name="$(printf "" | bemenu -p 'Name')"
+grim -g "$(slurp)" "/home/chris/Pictures/$name.png"

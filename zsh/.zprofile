@@ -38,17 +38,10 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
 export NNN_COLORS='4231'
 export NNN_BMS='h:~;A:~/Nextcloud/Syncthing/AU/;n:~/Nextcloud/Syncthing/AU/10.semester/;d:~/Downloads/;b:~/Dokumenter/Billeder/;p:~/Dokumenter/projects/;a:~/Nextcloud/Syncthing/AU/Arbejde/'
 export NNN_PLUG='o:fzopen;f:fzcd'
-
-export DOTREMINDERS=~/Nextcloud/Syncthing/rems/reminders.rem
+export BEMENU_OPTS='-H 35'
+export DOTREMINDERS=~/Syncthing/rems/reminders.rem
 
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+export WLR_NO_HARDWARE_CURSORS=1
 
-#export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
-#    nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
-#    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
-#    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
-#
-#StartX if not running in tty
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
-#
-#[ "$(tty)" = "/dev/tty1" ] && exec sway
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s dwl > /dev/null 2>&1 && while true; do ssh-agent river; done

@@ -119,5 +119,3 @@ else
 fi
 
 type_check
-feh_cmd
-pywal_cmd

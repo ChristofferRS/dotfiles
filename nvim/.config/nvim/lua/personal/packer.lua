@@ -2,7 +2,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'christoomey/vim-tmux-navigator'
     use 'ayu-theme/ayu-vim'
-    use {'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { {'nvim-lua/plenary.nvim'} } }
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.5', requires = { {'nvim-lua/plenary.nvim'} } }
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'

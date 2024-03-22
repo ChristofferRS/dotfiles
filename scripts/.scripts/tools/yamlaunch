@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+pkill yambar
+
+monitors=$(wlr-randr | grep "^[^ ]" | awk '{print $1}')
+
+for monitor in ${monitors}; do
+    if [ "$monitor" = "$1" ]; then
+        echo "Skipping $monitor"
+        continue
+    fi
+    echo "ON: $monitor"
+	riverctl focus-output ${monitor}
+	yambar &
+	sleep 0.2
+done
+

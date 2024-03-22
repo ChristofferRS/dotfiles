@@ -70,7 +70,7 @@ autoload -U colors && colors # Load colors
 
 setopt PROMPT_SUBST
 PROMPT='%B%{$fg[green]%}%1~%{$fg[blue]%}%{$fg[red]%}$(parse_git_branch) %{$reset_color%}>%b '
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
