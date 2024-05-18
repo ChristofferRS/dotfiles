@@ -3,11 +3,7 @@
 if [ $# -eq 1 ]; then
     selected=$1
 else
-<<<<<<< HEAD
-    selected=$(fd . ~/Nextcloud/Syncthing/AU ~/Dokumenter/projects/| sk)
-=======
     selected=$(fd . ~/Documents/ | sk)
->>>>>>> d3873f1 (Added nix and updated)
 fi
 
 dirname=`basename $selected`

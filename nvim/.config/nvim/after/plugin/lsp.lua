@@ -85,3 +85,5 @@ require'lspconfig'.tsserver.setup{}
 require'lspconfig'.phpactor.setup{}
 
 require'lspconfig'.gopls.setup{}
+
+require'lspconfig'.dartls.setup{}
