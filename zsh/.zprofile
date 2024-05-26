@@ -1,4 +1,5 @@
 export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/:$CARGO_HOME/bin"
+export PATH="$PATH:${HOME}/.local/share/go/bin/"
 export npm_config_prefix="$HOME/.local"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
