@@ -13,7 +13,6 @@ vim.opt.softtabstop=4
 vim.opt.wrap=false
 vim.opt.signcolumn="yes"
 vim.opt.termguicolors=true
-vim.opt.completeopt={"menuone","menu"}
 vim.opt.makeprg="make #1:r.pdf"
 vim.opt.colorcolumn="80"
 -- vim.filetype.add{extension = { md = 'rmd' } }
