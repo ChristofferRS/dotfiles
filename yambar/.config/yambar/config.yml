@@ -104,3 +104,7 @@ bar:
                                 - string: {text: "{linear_volume}%🔊", font: *hack}
                     type == "source":
                       {empty: {}}
+    - script:
+        path: /home/chris/.scripts/tools/countdown
+        args: []
+        content: {string: {text: "{days}⏳", font: *hack}}

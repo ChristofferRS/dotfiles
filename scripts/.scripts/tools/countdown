@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+now=$(date +%s)
+end=$(date +%s --date "2024-11-29")
+days=$(( ($end - $now)/(3600*24)))
+
+echo "days|int|$days"
+echo "test|string|111 days"
+echo ""
