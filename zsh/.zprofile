@@ -1,5 +1,5 @@
 export PATH="$(du -L $HOME/.scripts/ | cut -f2 | tr '\n' ':')$PATH:${HOME}/.local/bin/:$CARGO_HOME/bin"
-export PATH="$PATH:${HOME}/.local/share/go/bin/"
+export PATH="/home/chris/development/flutter/bin:$PATH"
 export npm_config_prefix="$HOME/.local"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
@@ -41,9 +41,15 @@ export NNN_BMS='h:~;A:~/Nextcloud/Syncthing/AU/;n:~/Nextcloud/Syncthing/AU/10.se
 export NNN_PLUG='o:fzopen;f:fzcd'
 export BEMENU_OPTS='-H 35'
 #export DOTREMINDERS=~/Syncthing/rems/reminders.rem
-export DOTREMINDERS=~/.config/remind/reminders.rem
 
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
-export WLR_NO_HARDWARE_CURSORS=1
 
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s dwl > /dev/null 2>&1 && while true; do ssh-agent river; done
+#export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
+#    nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+#    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
+#    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
+#
+#StartX if not running in tty
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+#
+#[ "$(tty)" = "/dev/tty1" ] && exec sway
