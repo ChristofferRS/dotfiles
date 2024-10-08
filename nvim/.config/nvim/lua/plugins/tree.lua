@@ -5,6 +5,9 @@ return {
             indent = {
                 enable = true,
             },
+            highlight = {
+                enable = true,
+            },
             ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
             auto_install = true,
         }

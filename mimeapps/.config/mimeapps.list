@@ -8,3 +8,4 @@ x-scheme-handler/magnet=torrent.desktop;
 application/x-bittorrent=torrent.desktop;
 application/gzip=xournalpp.desktop
 text/html=firefox.desktop
+video/webm=mpv.desktop
