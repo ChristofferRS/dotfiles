@@ -3,13 +3,13 @@ return {
     config = function()
         require('nvim-treesitter.configs').setup{
             indent = {
-                enable = true,
+                enable = false,
             },
             highlight = {
                 enable = true,
             },
-            ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
-            auto_install = true,
+            ensure_installed = { "python" },
+            auto_install = false,
         }
     end,
 }
