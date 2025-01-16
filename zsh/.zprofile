@@ -42,14 +42,14 @@ export NNN_PLUG='o:fzopen;f:fzcd'
 export BEMENU_OPTS='-H 35'
 #export DOTREMINDERS=~/Syncthing/rems/reminders.rem
 
-export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+#export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 #export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
 #    nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
 #    -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
 #    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
-#
-#StartX if not running in tty
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
-#
+
+
+
+[ "$(tty)" = "/dev/tty1" ] && ! pidof -s river >/dev/null 2>&1 && exec river
 #[ "$(tty)" = "/dev/tty1" ] && exec sway

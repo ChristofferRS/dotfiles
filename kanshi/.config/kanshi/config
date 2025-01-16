@@ -2,15 +2,9 @@ profile Default {
 	output eDP-1 enable mode 1920x1080
     exec yamlaunch
 }
-profile Work {
-	output eDP-1 disable
-    output "Lenovo Group Limited LEN T27h-20 VNA5C5A4" enable mode 2560x1440 position 0,0
-    output "Lenovo Group Limited LEN T27h-20 VNA5C5A6" enable mode 2560x1440 position 2560,0
-    exec yamlaunch eDP-1
-}
-profile Work2 {
-    output "Lenovo Group Limited LEN T2424pA V1A34356" enable mode 1920x1080 position 1920,0
-    output "Hewlett Packard HP ZR2330w 3CQ3330WGB" enable mode 1920x1080 position 0,0
+profile Docked {
+    output "Samsung Electric Company S24E450 H4ZK300139" enable mode 1920x1080 position 0,0
+	#output eDP-1 enable mode 1920x1080 position 1920,800
 	output eDP-1 disable
     exec yamlaunch eDP-1
 }

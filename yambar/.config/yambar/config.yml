@@ -1,7 +1,7 @@
 hack: &hack Roboto Mono:pixelsize=16
 bg_default: &bg_default {stack: [{background: {color: 81A1C1ff}}, {underline: {size: 4, color: D8DEE9ff}}]}
 bar:
-  height: 30
+  height: 24
   location: top
   font: JuliaMono:pixelsize=10
   spacing: 2
@@ -68,13 +68,23 @@ bar:
         content:
           - string: {text: "{time} UTC", right-margin: 20, font: *hack}
     - battery:
-        name: BAT1
+        name: BAT0
         poll-interval: 30000
         content:
           map:
             default: {string: {text: "🔋{capacity}% {estimate}", right-margin: 20, font: *hack}}
             conditions:
               state == charging: {string: {text: "⚡{capacity}% {estimate}", right-margin: 20, font: *hack}}
+    - network:
+        poll-interval: 10000
+        content:
+          map:
+            default:
+              {empty: {}}
+            conditions:
+              name == "wlp61s0":
+                  string: {text: "({state}) {ssid}: {quality}%📶", right-margin: 20, font: *hack}
+                
     - backlight:
         name: intel_backlight
         content:
@@ -104,7 +114,7 @@ bar:
                                 - string: {text: "{linear_volume}%🔊", font: *hack}
                     type == "source":
                       {empty: {}}
-    - script:
-        path: /home/chris/.scripts/tools/countdown
-        args: []
-        content: {string: {text: "{days}⏳", font: *hack}}
+    #    - script:
+    #        path: /home/chris/.scripts/tools/countdown
+    #        args: []
+    #        content: {string: {text: "{days}⏳", font: *hack}}

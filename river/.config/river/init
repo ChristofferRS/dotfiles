@@ -155,8 +155,6 @@ riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
 kanshi &
+yambar &
 dunst &
 swaybg -m fill -i ~/.cache/rndbg/wallpaper.jpg &
-
-
-
