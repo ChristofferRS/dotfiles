@@ -3,4 +3,4 @@
 
 
 area="$(slurp)"
-printf "" | bemenu -p 'Name' | xargs -I{} grim -g "$area" /home/chris/Pictures/{}.png
+printf "" | bemenu -p 'Name' | xargs -I{} grim -g "$area" /home/chris/Dokumenter/Billeder/{}.png

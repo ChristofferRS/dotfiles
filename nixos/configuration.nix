@@ -27,7 +27,7 @@
     networking.networkmanager.enable = true;
 
 # Set your time zone.
-    time.timeZone = "America/Nuuk";
+    time.timeZone = "Europe/Copenhagen";
 
 # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
@@ -46,9 +46,6 @@
         openFirewall = true;
     };
 
-    hardware.rtl-sdr.enable = true;
-    services.udev.packages = [ pkgs.rtl-sdr ];
-
 # rtkit is optional but recommended
     security.rtkit.enable = true;
     services.pipewire = {
@@ -58,30 +55,30 @@
         pulse.enable = true;
     };
 
-    services.syncthing = {
-        enable = true;
-        user = "chris";
-        configDir = "/home/chris/.config/syncthing";
-        overrideDevices = true;     # overrides any devices added or deleted through the WebUI
-        overrideFolders = true;     # overrides any folders added or deleted through the WebUI
-        settings = {
-            devices = {
-                "Zenfone" = { id = "75P3HEP-FNZOOIG-K4D32FY-VFDKWSI-BO2CDRD-JXBBDVV-ZI3PWHS-DDUK5QB"; };
-                "T480s" = { id = "DTE23NQ-YW6UNNZ-L2EUW3D-SZSWPZT-BOBGDL5-UVEH2RN-XRK2ZOO-BMZCTQK"; };
-            };
-            folders = {
-                "Obsidian-Vault" = {         # Name of folder in Syncthing, also the folder ID
-                path = "/home/chris/Documents/Vault";    # Which folder to add to Syncthing
-                devices = [ "Zenfone" "T480s"];      # Which devices to share the folder with
-                };
-            };
-        };
-    };
+    #services.syncthing = {
+    #    enable = true;
+    #    user = "chris";
+    #    configDir = "/home/chris/.config/syncthing";
+    #    overrideDevices = true;     # overrides any devices added or deleted through the WebUI
+    #    overrideFolders = true;     # overrides any folders added or deleted through the WebUI
+    #    settings = {
+    #        devices = {
+    #            "Zenfone" = { id = "75P3HEP-FNZOOIG-K4D32FY-VFDKWSI-BO2CDRD-JXBBDVV-ZI3PWHS-DDUK5QB"; };
+    #            "T480s" = { id = "DTE23NQ-YW6UNNZ-L2EUW3D-SZSWPZT-BOBGDL5-UVEH2RN-XRK2ZOO-BMZCTQK"; };
+    #        };
+    #        folders = {
+    #            "Obsidian-Vault" = {         # Name of folder in Syncthing, also the folder ID
+    #            path = "/home/chris/Documents/Vault";    # Which folder to add to Syncthing
+    #            devices = [ "Zenfone" "T480s"];      # Which devices to share the folder with
+    #            };
+    #        };
+    #    };
+    #};
 
-# Configure console keymap
+    # Configure console keymap
     console.keyMap = "dk";
 
-# Define a user account. Don't forget to set a password with ‘passwd’.
+    # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.chris = {
         isNormalUser = true;
         description = "chris";
