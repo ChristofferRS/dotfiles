@@ -1,7 +1,7 @@
-hack: &hack Roboto Mono:pixelsize=16
+hack: &hack Roboto Mono:pixelsize=18
 bg_default: &bg_default {stack: [{background: {color: 81A1C1ff}}, {underline: {size: 4, color: D8DEE9ff}}]}
 bar:
-  height: 24
+  height: 30
   location: top
   font: JuliaMono:pixelsize=10
   spacing: 2
